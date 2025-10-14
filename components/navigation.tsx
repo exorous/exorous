@@ -71,7 +71,7 @@ export default function Navigation() {
             ))}
           </ul>
           <ThemeToggle />
-          <Link href={"/#projects"}>
+          <Link href={"/#contact"}>
           <Button className="rounded-full">
             Start a Project
           </Button>
@@ -115,7 +115,7 @@ export default function Navigation() {
               ))}
               <li className="pt-2">
                
-                  <Link href={"/#projects"}>
+                  <Link href={"/#contact"}>
           <Button className="w-full rounded-full">
                   Start a Project
                 </Button>

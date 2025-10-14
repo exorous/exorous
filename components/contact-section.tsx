@@ -51,7 +51,7 @@ export default function ContactSection() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "ee75f58f-9687-457d-b62f-158d059ff7b1", 
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY, 
           name: values.name,
           email: values.email,
           budget: values.budget || "N/A",

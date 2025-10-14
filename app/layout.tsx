@@ -8,7 +8,8 @@ import CursorFollower from '@/components/cursor-follower';
 import SmoothScroll from '@/components/smooth-scroll';
 import Analytics from '@/components/Analytics';
 import Script from 'next/script';
-const GA_TRACKING_ID = 'G-XEYYBPZGT5'; 
+
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID || 'G-XEYYBPZGT5'; 
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
