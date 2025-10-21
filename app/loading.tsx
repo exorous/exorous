@@ -58,7 +58,7 @@ export default function Loading() {
           {/* Logo placeholder */}
           <div className="mb-8">
             <div className="text-3xl font-bold">
-              Nex<span className="text-cyan-400">whizz</span>
+              Ex<span className="text-cyan-400">orous</span>
             </div>
           </div>
 
