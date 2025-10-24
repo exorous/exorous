@@ -7,6 +7,7 @@ import Footer from '@/components/footer';
 import CursorFollower from '@/components/cursor-follower';
 import SmoothScroll from '@/components/smooth-scroll';
 import Analytics from '@/components/Analytics';
+import BehavioralTriggers from '@/components/behavioral-triggers';
 import Script from 'next/script';
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID || 'G-Q8DY78XBGD'; 
@@ -58,9 +59,11 @@ export default function RootLayout({
           <SmoothScroll>
             <CursorFollower />
             <Navigation />
-            <main className="relative">
-              {children}
-            </main>
+            <BehavioralTriggers>
+              <main className="relative">
+                {children}
+              </main>
+            </BehavioralTriggers>
             <Footer />
           </SmoothScroll>
         </ThemeProvider>

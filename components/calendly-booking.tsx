@@ -120,7 +120,7 @@ export default function CalendlyBooking({
       <div className="container mx-auto px-4 relative z-10">
         <MotionSection className="mb-12 sm:mb-16 text-center px-4">
           <h2 className="text-base sm:text-lg font-medium text-primary mb-2">Book a Meeting</h2>
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Let's Discuss Your Project</h3>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Let&apos;s Discuss Your Project</h3>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
             Schedule a free consultation to discuss your project requirements and get expert advice.
           </p>

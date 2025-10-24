@@ -1,0 +1,47 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import ExitIntentPopup from "./exit-intent-popup";
+import IdleDetection from "./idle-detection";
+import ReturnVisitorDetection from "./return-visitor-detection";
+
+interface BehavioralTriggersProps {
+  children: React.ReactNode;
+  enableStickyButton?: boolean;
+  enableExitIntent?: boolean;
+  enableIdleDetection?: boolean;
+  enableReturnVisitor?: boolean;
+  className?: string;
+}
+
+export default function BehavioralTriggers({
+  children,
+  enableStickyButton = true,
+  enableExitIntent = true,
+  enableIdleDetection = true,
+  enableReturnVisitor = true,
+  className = "",
+}: BehavioralTriggersProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Ensure all components are loaded after hydration
+    setIsLoaded(true);
+  }, []);
+
+  if (!isLoaded) {
+    return <>{children}</>;
+  }
+
+  return (
+    <div className={`behavioral-triggers-container ${className}`}>
+      {children}
+
+      {/* Behavioral Trigger Components */}
+
+      {enableExitIntent && <ExitIntentPopup />}
+      {enableIdleDetection && <IdleDetection />}
+      {enableReturnVisitor && <ReturnVisitorDetection />}
+    </div>
+  );
+}
