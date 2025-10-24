@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/theme-toggle';
 import Image from 'next/image';
+import { trackButtonClick } from '@/lib/gtag';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +73,10 @@ export default function Navigation() {
           </ul>
           <ThemeToggle />
           <Link href={"/#contact"}>
-          <Button className="rounded-full">
+          <Button 
+            className="rounded-full"
+            onClick={() => trackButtonClick('Start a Project', 'desktop-nav')}
+          >
             Start a Project
           </Button>
           </Link>
@@ -116,7 +120,10 @@ export default function Navigation() {
               <li className="pt-2">
                
                   <Link href={"/#contact"}>
-          <Button className="w-full rounded-full">
+          <Button 
+            className="w-full rounded-full"
+            onClick={() => trackButtonClick('Start a Project', 'mobile-nav')}
+          >
                   Start a Project
                 </Button>
           </Link>

@@ -7,6 +7,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { trackProjectView, trackExternalLink } from '@/lib/gtag';
 
 interface ProjectCardProps {
   title: string;
@@ -131,7 +132,14 @@ export default function ProjectCard({
             }}
             transition={{ duration: 0.3 }}
           >
-           <Link href={projectUrl} className='flex gap-1 items-center'>
+           <Link 
+             href={projectUrl} 
+             className='flex gap-1 items-center'
+             onClick={() => {
+               trackProjectView(title);
+               trackExternalLink(projectUrl, title);
+             }}
+           >
             View Project <ArrowUpRight className="h-4 w-4" />
            </Link>
           </motion.div>

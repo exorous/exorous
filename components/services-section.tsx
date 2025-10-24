@@ -7,8 +7,8 @@ import {
   Paintbrush, 
   Smartphone, 
   LineChart, 
-  Settings, 
-  Shield,
+  Bot,
+  Zap,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -49,14 +49,14 @@ export default function ServicesSection() {
       description: "Data-driven strategies to improve search rankings and user engagement metrics.",
     },
     {
-      icon: <Settings className="h-10 w-10" />,
-      title: "CMS Solutions",
-      description: "Customized content management systems allowing easy website updates and management.",
+      icon: <Bot className="h-10 w-10" />,
+      title: "AI Agent Development",
+      description: "Intelligent AI agents and chatbots that automate customer interactions and enhance user experience.",
     },
     {
-      icon: <Shield className="h-10 w-10" />,
-      title: "Maintenance & Support",
-      description: "Ongoing website maintenance, performance optimization, and technical support.",
+      icon: <Zap className="h-10 w-10" />,
+      title: "Business Automation",
+      description: "Streamline your operations with custom automation solutions that reduce manual work and increase efficiency.",
     }
   ];
 
