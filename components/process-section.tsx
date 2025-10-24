@@ -51,10 +51,10 @@ export default function ProcessSection() {
   return (
     <section id="process" className="py-24 relative" ref={containerRef}>
       <div className="container mx-auto px-4">
-        <MotionSection className="mb-16 text-center">
-          <h2 className="text-lg font-medium text-primary mb-2">Our Process</h2>
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+        <MotionSection className="mb-12 sm:mb-16 text-center px-4">
+          <h2 className="text-base sm:text-lg font-medium text-primary mb-2">Our Process</h2>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">How We Work</h3>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
             Our streamlined process ensures we deliver exceptional results 
             while keeping you informed and involved at every stage.
           </p>
@@ -87,19 +87,19 @@ export default function ProcessSection() {
 
               {/* Content */}
               <MotionSection
-                className={`ml-14 md:ml-0 px-6 py-6 rounded-lg glass-panel w-full md:w-[calc(50%-2rem)] ${
+                className={`ml-14 md:ml-0 px-4 sm:px-6 py-4 sm:py-6 rounded-lg glass-panel w-full md:w-[calc(50%-2rem)] ${
                   index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'
                 }`}
                 delay={0.1 * index}
                 direction={index % 2 === 0 ? 'right' : 'left'}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-md bg-primary/10 text-primary">
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <div className="p-1.5 sm:p-2 rounded-md bg-primary/10 text-primary">
                     {step.icon}
                   </div>
-                  <h4 className="text-xl font-bold">{step.title}</h4>
+                  <h4 className="text-lg sm:text-xl font-bold">{step.title}</h4>
                 </div>
-                <p className="text-muted-foreground">{step.description}</p>
+                <p className="text-sm sm:text-base text-muted-foreground">{step.description}</p>
               </MotionSection>
             </div>
           ))}

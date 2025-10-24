@@ -65,8 +65,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-5xl mx-auto text-center"
         >
-          <div className="text-primary text-lg font-medium mb-4">Digital Experience Agency</div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <div className="text-primary text-sm sm:text-base lg:text-lg font-medium mb-4">Digital Experience Agency</div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
             <span className="block mb-2">The Whizz Behind Next</span>
             <span className="block">
               Big{" "}
@@ -77,19 +77,19 @@ export default function HeroSection() {
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 px-4">
             We build cutting-edge websites and applications that captivate audiences
             and deliver exceptional user experiences.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Link href={"#contact"}>
-            <Button size="lg" className="gap-2 rounded-full text-base">
-              Start a Project <ArrowRight size={16} />
+            <Button size="lg" className="gap-2 rounded-full text-sm sm:text-base w-full sm:w-auto">
+              Book a Meeting <ArrowRight size={16} />
             </Button>
             </Link>
           <Link href={"#projects"}>
-            <Button size="lg" variant="outline" className="gap-2 rounded-full text-base">
+            <Button size="lg" variant="outline" className="gap-2 rounded-full text-sm sm:text-base w-full sm:w-auto">
               See Our Work
             </Button>
           </Link>

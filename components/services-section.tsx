@@ -89,11 +89,11 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-24 relative overflow-hidden" ref={containerRef}>
       <div className="container mx-auto px-4">
-        <div className="flex justify-center items-center mb-16">
-          <MotionSection className="text-center">
-            <h2 className="text-lg font-medium text-primary mb-2">Our Services</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">What We Do</h3>
-            <p className="text-muted-foreground max-w-2xl">
+        <div className="flex justify-center items-center mb-12 sm:mb-16">
+          <MotionSection className="text-center px-4">
+            <h2 className="text-base sm:text-lg font-medium text-primary mb-2">Our Services</h2>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">What We Do</h3>
+            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
               We specialize in creating digital experiences that engage, inspire, and deliver results.
               Our comprehensive suite of services covers everything you need for a successful digital presence.
             </p>
@@ -122,7 +122,16 @@ export default function ServicesSection() {
       </div>
 
       {/* Mobile View (Vertical Cards) */}
-      <div className="md:hidden px-4 grid grid-cols-1 gap-6">
+      <div className="md:hidden px-4 grid grid-cols-1 gap-4 sm:gap-6">
+        {services.map((service, index) => (
+          <MotionSection key={index} delay={0.1 * index}>
+            <ServiceCard {...service} index={index} />
+          </MotionSection>
+        ))}
+      </div>
+
+      {/* Tablet View (2 columns) */}
+      <div className="hidden md:grid lg:hidden px-4 grid-cols-2 gap-4">
         {services.map((service, index) => (
           <MotionSection key={index} delay={0.1 * index}>
             <ServiceCard {...service} index={index} />
@@ -131,7 +140,7 @@ export default function ServicesSection() {
       </div>
 
       {/* Desktop View (Scrollable Cards) */}
-      <div className="hidden md:block relative">
+      <div className="hidden lg:block relative">
         {/* For framer-motion animation on scroll */}
         <motion.div 
           className="hidden"

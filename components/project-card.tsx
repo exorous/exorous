@@ -59,7 +59,7 @@ export default function ProjectCard({
     <motion.div
       ref={cardRef}
       className={cn(
-        "group card-3d relative rounded-xl overflow-hidden h-[360px]",
+        "group card-3d relative rounded-xl overflow-hidden h-[300px] sm:h-[360px]",
         isHovered ? "shadow-xl z-10" : "shadow-md z-0"
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -94,7 +94,7 @@ export default function ProjectCard({
       {/* Card content overlay */}
       <div 
         className={cn(
-          "absolute inset-0 flex flex-col justify-end p-6 transition-all duration-300",
+          "absolute inset-0 flex flex-col justify-end p-4 sm:p-6 transition-all duration-300",
           isHovered ? "bg-gradient-to-t from-background/90 via-background/70 to-transparent" : "bg-gradient-to-t from-background/80 to-transparent/0"
         )}
       >
@@ -111,10 +111,10 @@ export default function ProjectCard({
             ))}
           </motion.div>
 
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
+          <h3 className="text-lg sm:text-xl font-bold mb-2">{title}</h3>
           
           <motion.p 
-            className="text-muted-foreground mb-4"
+            className="text-sm sm:text-base text-muted-foreground mb-4"
             animate={{ 
               height: isHovered ? "auto" : "0px", 
               opacity: isHovered ? 1 : 0 

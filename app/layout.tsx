@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
@@ -11,13 +11,14 @@ import Script from 'next/script';
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID || 'G-Q8DY78XBGD'; 
 
-const spaceGrotesk = Space_Grotesk({ 
+const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-inter',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'Exorous | Digital Experience Agency | Cutting-Edge Web & App Solutions',
+  title: 'Exorous',
   description: 'The whizz of web development, design, and digital marketing. We create stunning websites and applications that drive results. The whizz behind the next big ideas and innovation',
 };
 
@@ -28,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
          <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}

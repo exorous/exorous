@@ -4,6 +4,14 @@ import { useEffect, useState } from "react"
 
 export default function Loading() {
   const [progress, setProgress] = useState(0)
+  const [stars, setStars] = useState<Array<{
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+    opacity: number;
+    animation: string;
+  }>>([])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,21 +21,34 @@ export default function Loading() {
     return () => clearTimeout(timer)
   }, [progress])
 
+  useEffect(() => {
+    // Generate stars only on client side to avoid hydration mismatch
+    const generatedStars = Array.from({ length: 100 }).map(() => ({
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      width: Math.random() * 3,
+      height: Math.random() * 3,
+      opacity: Math.random() * 0.7 + 0.3,
+      animation: `twinkle ${Math.random() * 5 + 3}s infinite ${Math.random() * 5}s`,
+    }))
+    setStars(generatedStars)
+  }, [])
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden text-white px-4">
       {/* Stars background */}
       <div className="absolute inset-0 z-0">
-        {Array.from({ length: 100 }).map((_, i) => (
+        {stars.map((star, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-white"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 3}px`,
-              height: `${Math.random() * 3}px`,
-              opacity: Math.random() * 0.7 + 0.3,
-              animation: `twinkle ${Math.random() * 5 + 3}s infinite ${Math.random() * 5}s`,
+              top: `${star.top}%`,
+              left: `${star.left}%`,
+              width: `${star.width}px`,
+              height: `${star.height}px`,
+              opacity: star.opacity,
+              animation: star.animation,
             }}
           />
         ))}
@@ -53,17 +74,17 @@ export default function Loading() {
         }}
       />
 
-      <div className="z-10 text-center max-w-3xl">
+      <div className="z-10 text-center max-w-3xl px-4">
         <div className="flex flex-col items-center">
           {/* Logo placeholder */}
-          <div className="mb-8">
-            <div className="text-3xl font-bold">
+          <div className="mb-6 sm:mb-8">
+            <div className="text-2xl sm:text-3xl font-bold">
               Ex<span className="text-cyan-400">orous</span>
             </div>
           </div>
 
           {/* Orbital loading animation */}
-          <div className="relative w-32 h-32 mb-8">
+          <div className="relative w-24 h-24 sm:w-32 sm:h-32 mb-6 sm:mb-8">
             <div className="absolute inset-0 rounded-full border-2 border-gray-800 opacity-30"></div>
 
             {/* Orbital rings */}
@@ -114,17 +135,17 @@ export default function Loading() {
           </div>
 
           {/* Progress bar */}
-          <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden mb-2">
+          <div className="w-48 sm:w-64 h-1 bg-gray-800 rounded-full overflow-hidden mb-2">
             <div
               className="h-full bg-cyan-400 transition-all duration-100 ease-out"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
-          <div className="text-sm text-gray-400">{progress < 100 ? "Loading..." : "Ready"}</div>
+          <div className="text-xs sm:text-sm text-gray-400">{progress < 100 ? "Loading..." : "Ready"}</div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 text-center text-gray-500 text-sm">
+      <div className="absolute bottom-6 sm:bottom-8 text-center text-gray-500 text-xs sm:text-sm px-4">
         <p>Exorous Digital Experience Agency</p>
       </div>
 

@@ -19,7 +19,7 @@ export default function ServiceCard({ icon, title, description, index }: Service
     <motion.div
       ref={cardRef}
       className={cn(
-        "group card-3d relative rounded-xl p-6 glass-panel neon-border h-full",
+        "group card-3d relative rounded-xl p-4 sm:p-6 glass-panel neon-border h-full",
         isHovered ? "shadow-lg" : "shadow-md"
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -36,19 +36,19 @@ export default function ServiceCard({ icon, title, description, index }: Service
         </div>
 
         <div className="relative z-10">
-          <div className="flex flex-col items-start gap-4">
-            <div className="p-3 rounded-lg bg-primary/10 text-primary">
+          <div className="flex flex-col items-start gap-3 sm:gap-4">
+            <div className="p-2 sm:p-3 rounded-lg bg-primary/10 text-primary">
               {icon}
             </div>
             
-            <h3 className="text-xl font-bold gradient-text">{title}</h3>
+            <h3 className="text-lg sm:text-xl font-bold gradient-text">{title}</h3>
             
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               {description}
             </p>
             
             <motion.div 
-              className="mt-4 text-primary font-medium"
+              className="mt-3 sm:mt-4 text-sm sm:text-base text-primary font-medium"
               initial={{ opacity: 0.8 }}
               animate={{ opacity: isHovered ? 1 : 0.8 }}
             >

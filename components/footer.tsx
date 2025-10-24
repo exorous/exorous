@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, ExternalLink, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Sparkles, ExternalLink, Twitter, Linkedin, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
+import { config } from '@/lib/config';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -58,27 +59,50 @@ export default function Footer() {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between gap-12 mb-16">
-          <div className="w-full lg:w-1/3 mb-8 lg:mb-0">
-            {/* <Link href="/" className="flex items-center gap-2 text-xl font-bold mb-4">
-              <Sparkles className="h-6 w-6 text-primary" />
-              <span className="gradient-text">FlowCode</span>
-            </Link> */}
-
-             <Link 
-                      href="/" 
-                      className="flex items-center gap-2 text-xl font-bold mb-4"
-                    >
-                      <Image src={"/logo.png"} height={30} width={30} alt='Exorous' />
-                      <span className="gradient-text mt-3">Exorous</span>
-                    </Link>
+        <div className="flex flex-col lg:flex-row justify-between gap-8 sm:gap-12 mb-12 sm:mb-16">
+          <div className="w-full lg:w-1/3 mb-6 sm:mb-8 lg:mb-0">
+            <Link 
+              href="/" 
+              className="flex items-center gap-2 text-lg sm:text-xl font-bold mb-4"
+            >
+              <Image src={"/logo.png"} height={24} width={24} alt='Exorous' className="sm:h-[30px] sm:w-[30px]" />
+              <span className="gradient-text mt-2 sm:mt-3">Exorous</span>
+            </Link>
             
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 max-w-md">
               Crafting digital experiences that flow. We specialize in creating websites and applications
               that engage users and drive business growth.
             </p>
             
-            <div className="flex flex-wrap gap-3">
+            {/* Contact Information */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary" />
+                <a 
+                  href={`mailto:${config.app.email}`}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {config.app.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary" />
+                <a 
+                  href={`tel:${config.app.phone}`}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {config.app.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span className="text-sm text-muted-foreground">
+                  {config.app.address}
+                </span>
+              </div>
+            </div>
+            
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -88,18 +112,17 @@ export default function Footer() {
                   className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                   aria-label={social.name}
                 >
-                  {/* <ExternalLink className="h-5 w-5" /> */}
                   {social.icon}
                 </a>
               ))}
             </div>
           </div>
           
-          <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {footerLinks.map((column, colIndex) => (
               <div key={colIndex}>
-                <h3 className="font-semibold mb-4">{column.title}</h3>
-                <ul className="space-y-2">
+                <h3 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">{column.title}</h3>
+                <ul className="space-y-1.5 sm:space-y-2">
                   {column.links.map((link, linkIndex) => (
                     <motion.li
                       key={linkIndex}
@@ -108,7 +131,7 @@ export default function Footer() {
                     >
                       <Link 
                         href={link.href} 
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -122,15 +145,15 @@ export default function Footer() {
         
         <Separator className="my-8" />
         
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
             © {currentYear} Exorous. All rights reserved.
           </p>
           
           <Button 
             variant="outline" 
             size="sm" 
-            className="rounded-full" 
+            className="rounded-full text-xs sm:text-sm" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Back to Top

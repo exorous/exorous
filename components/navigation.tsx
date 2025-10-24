@@ -56,13 +56,13 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
-          <ul className="flex gap-6">
+        <div className="hidden md:flex items-center gap-4 lg:gap-8">
+          <ul className="flex gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link 
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors relative group"
+                  className="text-sm lg:text-base text-muted-foreground hover:text-primary transition-colors relative group"
                   onClick={closeMenu}
                 >
                   {link.name}
@@ -74,23 +74,24 @@ export default function Navigation() {
           <ThemeToggle />
           <Link href={"/#contact"}>
           <Button 
-            className="rounded-full"
-            onClick={() => trackButtonClick('Start a Project', 'desktop-nav')}
+            size="sm"
+            className="rounded-full text-sm"
+            onClick={() => trackButtonClick('Book a Meeting', 'desktop-nav')}
           >
-            Start a Project
+            Book a Meeting
           </Button>
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-4 lg:hidden">
+        <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <button
             onClick={toggleMenu}
             className="text-foreground p-1 focus:outline-none"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>
@@ -103,14 +104,14 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
+            className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
           >
-            <ul className="flex flex-col py-4 px-6 space-y-4">
+            <ul className="flex flex-col py-4 px-4 space-y-3">
               {navLinks.map((link) => (
                 <li key={link.name} className="w-full">
                   <Link 
                     href={link.href}
-                    className="text-lg block py-2 hover:text-primary transition-colors"
+                    className="text-base block py-2 hover:text-primary transition-colors"
                     onClick={closeMenu}
                   >
                     {link.name}
@@ -122,9 +123,9 @@ export default function Navigation() {
                   <Link href={"/#contact"}>
           <Button 
             className="w-full rounded-full"
-            onClick={() => trackButtonClick('Start a Project', 'mobile-nav')}
+            onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
           >
-                  Start a Project
+                  Book a Meeting
                 </Button>
           </Link>
               </li>

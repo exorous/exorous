@@ -13,22 +13,6 @@ export default function ProjectsSection() {
 
   const projects = [
     {
-      title: "Sens AI",
-      description: "Advance your career with personalized guidance, interview prep, and AI-powered tools for job success.",
-      imageUrl: "/sensai.png",
-      category: "ecommerce",
-      tags: [],
-      projectUrl: "https://sensai37.vercel.app/",
-    },
-    {
-      title: "Short Link",
-      description: "Create short, memorable links in seconds. Track their performance and ensure safety with our advanced URL shortening platform.",
-      imageUrl: "/shortlink.png",
-      category: "dashboard",
-      tags: [],
-      projectUrl: "https://shortlink37.vercel.app/",
-    },
-    {
       title: "Fizzi",
       description: "Live Gutsy - Soda perfected with 3-5g sugar, 9g fiber, and 5 delicious flavors. Gut-friendly goodness with prebiotics and probiotics.",
       imageUrl: "/fizzi.png",
@@ -45,6 +29,14 @@ export default function ProjectsSection() {
       projectUrl: "https://nimbus37.vercel.app/",
     },
     {
+      title: "Suburbia skate",
+      description: "Build your own skate board.",
+      imageUrl: "/skate.png",
+      category: "dashboard",
+      tags: [],
+      projectUrl: "https://skateboard37.vercel.app/",
+    },
+    {
       title: "CreatorHub",
       description: "Create.Publish.Grow. The AI-powered platform that turns your ideas into engaging content and helps you build a thriving creator business.",
       imageUrl: "/creatorhub.png",
@@ -53,12 +45,20 @@ export default function ProjectsSection() {
       projectUrl: "https://creatorhub37.vercel.app/",
     },
     {
-      title: "Suburbia skate",
-      description: "Build your own skate board.",
-      imageUrl: "/skate.png",
+      title: "Sens AI",
+      description: "Advance your career with personalized guidance, interview prep, and AI-powered tools for job success.",
+      imageUrl: "/sensai.png",
+      category: "ecommerce",
+      tags: [],
+      projectUrl: "https://sensai37.vercel.app/",
+    },
+    {
+      title: "Short Link",
+      description: "Create short, memorable links in seconds. Track their performance and ensure safety with our advanced URL shortening platform.",
+      imageUrl: "/shortlink.png",
       category: "dashboard",
       tags: [],
-      projectUrl: "https://skateboard37.vercel.app/",
+      projectUrl: "https://shortlink37.vercel.app/",
     }
   ];
 
@@ -69,10 +69,10 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-4">
-        <MotionSection className="mb-16 text-center">
-          <h2 className="text-lg font-medium text-primary mb-2">Our Work</h2>
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">Projects</h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+        <MotionSection className="mb-12 sm:mb-16 text-center px-4">
+          <h2 className="text-base sm:text-lg font-medium text-primary mb-2">Our Work</h2>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Projects</h3>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
             Explore our portfolio of innovative digital solutions that have helped our clients 
             achieve their business goals and captivate their audiences.
           </p>
@@ -98,7 +98,7 @@ export default function ProjectsSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             {filteredProjects.map((project, index) => (
               <MotionSection key={index} delay={0.1 * index} direction="up">

@@ -3,90 +3,40 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  zodResolver
-} from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Sparkles, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { 
+  Calendar, 
+  Clock, 
+  Users, 
+  CheckCircle,
+  Sparkles
+} from 'lucide-react';
 import MotionSection from './motion-section';
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  budget: z.string().optional(),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
+import { meetingTypes } from '@/lib/config';
 
 export default function ContactSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const selectedMeeting = meetingTypes[0]; // Use the first (and only) meeting type
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      budget: "",
-      message: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY, 
-          name: values.name,
-          email: values.email,
-          budget: values.budget || "N/A",
-          message: values.message,
-        }),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        form.reset();
-      } else {
-        console.error("Form submission failed.");
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setIsSubmitting(false);
+  const openCalendlyBooking = () => {
+    if (typeof window !== 'undefined') {
+      window.open(selectedMeeting.calendlyUrl, '_blank', 'noopener,noreferrer');
     }
-  }
+  };
 
   const contactInfo = [
     {
-      icon: <Mail className="h-5 w-5" />,
-      label: "Email",
-      value: "contact@exorous.com",
+      icon: <Calendar className="h-5 w-5" />,
+      label: "Schedule",
+      value: "Book a free consultation",
     },
     {
-      icon: <Phone className="h-5 w-5" />,
-      label: "Phone",
-      value: "+880 1813316904",
+      icon: <Clock className="h-5 w-5" />,
+      label: "Duration", 
+      value: "30-60 minutes",
     },
     {
-      icon: <MapPin className="h-5 w-5" />,
-      label: "Address",
-      value: "Mirpur DHOS, Dhaka, Bangladesh",
+      icon: <Users className="h-5 w-5" />,
+      label: "Format",
+      value: "One-on-one video call",
     },
   ];
 
@@ -95,127 +45,103 @@ export default function ContactSection() {
       <div className="absolute inset-0 z-0 grid-pattern opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <MotionSection className="mb-16 text-center">
-          <h2 className="text-lg font-medium text-primary mb-2">Get In Touch</h2>
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">Start Your Project</h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Ready to elevate your digital presence? Contact us today to discuss
-            your project and discover how we can help you achieve your goals.
+        <MotionSection className="mb-12 sm:mb-16 text-center px-4">
+          <h2 className="text-base sm:text-lg font-medium text-primary mb-2">Book a Meeting</h2>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Let&apos;s Discuss Your Project</h3>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            Schedule a free consultation to discuss your project requirements and get expert advice.
           </p>
         </MotionSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <MotionSection className="glass-panel rounded-xl p-8 pb-28" direction="right">
-            <h4 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              Let's Connect
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <MotionSection className="glass-panel rounded-xl p-6 sm:p-8" direction="right">
+            <h4 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+              <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              Why Book a Meeting?
             </h4>
 
-            <div className="space-y-6 mb-8">
+            <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
               {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-center gap-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                <div key={index} className="flex items-center gap-3 sm:gap-4">
+                  <div className="p-2 sm:p-3 rounded-full bg-primary/10 text-primary">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{item.label}</p>
-                    <p className="font-medium">{item.value}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{item.label}</p>
+                    <p className="text-sm sm:text-base font-medium">{item.value}</p>
                   </div>
                 </div>
               ))}
             </div>
+
+            <div className="space-y-4">
+              <h5 className="font-semibold text-lg">What You&apos;ll Get:</h5>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  Project requirements analysis
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  Technology recommendations
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  Timeline and budget estimates
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  Next steps roadmap
+                </li>
+              </ul>
+            </div>
           </MotionSection>
 
-          <MotionSection className="glass-panel rounded-xl p-8" direction="left">
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center py-10"
-              >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Send className="h-8 w-8 text-primary" />
-                </div>
-                <h4 className="text-2xl font-bold mb-2">Message Sent!</h4>
-                <p className="text-muted-foreground">
-                  Thanks for reaching out. We'll get back to you soon.
+          <MotionSection className="glass-panel rounded-xl p-6 sm:p-8" direction="left">
+            <div className="space-y-6">
+              <div className="text-center">
+                <h4 className="text-xl font-bold mb-2">Free Consultation</h4>
+                <p className="text-muted-foreground mb-6">
+                  Discuss your project requirements and get expert advice
                 </p>
-              </motion.div>
-            ) : (
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Your name"
-                            {...field}
-                            className="neon-border"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              </div>
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="your.email@example.com"
-                            type="email"
-                            {...field}
-                            className="neon-border"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Tell us about your project..."
-                            className="min-h-32 neon-border"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <Button
-                    type="submit"
-                    className="w-full rounded-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center gap-2">
-                        <span className="animate-spin h-4 w-4 border-2 border-background border-t-transparent rounded-full" />
-                        Sending...
+              <div className="p-6 rounded-lg border-2 border-primary bg-primary/5">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                    <Users className="h-6 w-6" />
+                  </div>
+                  <div className="flex-1">
+                    <h5 className="text-lg font-semibold mb-2">Free Consultation</h5>
+                    <p className="text-muted-foreground mb-4">
+                      Discuss your project and get expert advice on the best solutions for your business needs.
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm bg-primary/10 text-primary px-3 py-1 rounded">
+                        30-60 minutes
                       </span>
-                    ) : (
-                      "Send Message"
-                    )}
-                  </Button>
-                </form>
-              </Form>
-            )}
+                      <span className="text-sm font-medium text-green-600">
+                        Free
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Button 
+                  onClick={openCalendlyBooking}
+                  size="lg"
+                  className="w-full rounded-full"
+                >
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Schedule Your Meeting
+                </Button>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Powered by Calendly • Secure & Professional
+                </p>
+              </div>
+            </div>
           </MotionSection>
         </div>
       </div>
