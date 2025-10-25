@@ -102,14 +102,14 @@ export default function ExitIntentPopup({ className = "" }: ExitIntentPopupProps
               stiffness: 300, 
               damping: 30 
             }}
-            className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${className}`}
+            className={`fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 ${className}`}
           >
-            <div className="bg-background border border-border rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden">
+            <div className="bg-background border border-border rounded-2xl shadow-2xl max-w-md w-full mx-2 sm:mx-4 overflow-hidden max-h-[90vh] overflow-y-auto">
               {/* Header */}
-              <div className="relative bg-gradient-to-r from-primary/10 to-primary/5 p-6 text-center">
+              <div className="relative bg-gradient-to-r from-primary/10 to-primary/5 p-4 sm:p-6 text-center">
                 <button
                   onClick={closePopup}
-                  className="absolute top-4 right-4 p-1 hover:bg-muted rounded-full transition-colors"
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1 hover:bg-muted rounded-full transition-colors touch-manipulation"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -118,49 +118,49 @@ export default function ExitIntentPopup({ className = "" }: ExitIntentPopupProps
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <Sparkles className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 text-primary mx-auto mb-2 sm:mb-3" />
                 </motion.div>
                 
-                <h3 className="text-xl font-bold mb-2">Wait! Don't miss out!</h3>
-                <p className="text-muted-foreground text-sm">
+                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Wait! Don&apos;t miss out!</h3>
+                <p className="text-muted-foreground text-xs sm:text-sm">
                   Get a free consultation and expert advice on your project
                 </p>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <div className="space-y-3 mb-6">
+              <div className="p-4 sm:p-6">
+                <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                   {benefits.map((benefit, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-2 sm:gap-3"
                     >
-                      <div className="p-1 rounded-full bg-primary/10 text-primary">
+                      <div className="p-1 rounded-full bg-primary/10 text-primary flex-shrink-0">
                         {benefit.icon}
                       </div>
-                      <span className="text-sm">{benefit.text}</span>
+                      <span className="text-xs sm:text-sm">{benefit.text}</span>
                     </motion.div>
                   ))}
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <Button
                     onClick={openCalendlyBooking}
                     size="lg"
-                    className="w-full rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+                    className="w-full rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 touch-manipulation min-h-[44px]"
                   >
                     <Calendar className="h-4 w-4 mr-2" />
-                    Book Free Consultation
+                    <span className="text-sm sm:text-base">Book Free Consultation</span>
                   </Button>
                   
                   <Button
                     onClick={closePopup}
                     variant="ghost"
                     size="sm"
-                    className="w-full"
+                    className="w-full touch-manipulation min-h-[40px]"
                   >
                     Maybe later
                   </Button>

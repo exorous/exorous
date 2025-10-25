@@ -100,17 +100,17 @@ export default function IdleDetection({
             stiffness: 300, 
             damping: 30 
           }}
-          className={`fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-80 z-50 ${className}`}
+          className={`fixed bottom-4 left-2 right-2 sm:bottom-6 sm:left-6 sm:right-6 md:left-auto md:right-6 md:w-80 z-50 ${className}`}
         >
-          <div className="bg-background border border-border rounded-xl shadow-lg p-4 relative">
+          <div className="bg-background border border-border rounded-xl shadow-lg p-3 sm:p-4 relative">
             <button
               onClick={dismissNotification}
-              className="absolute top-2 right-2 p-1 hover:bg-muted rounded-full transition-colors"
+              className="absolute top-2 right-2 p-1 hover:bg-muted rounded-full transition-colors touch-manipulation"
             >
               <X className="h-4 w-4" />
             </button>
             
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2 sm:gap-3">
               <motion.div
                 animate={{ 
                   scale: [1, 1.1, 1],
@@ -121,45 +121,45 @@ export default function IdleDetection({
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="p-2 rounded-full bg-primary/10 text-primary flex-shrink-0"
+                className="p-1.5 sm:p-2 rounded-full bg-primary/10 text-primary flex-shrink-0"
               >
-                <Clock className="h-5 w-5" />
+                <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
               </motion.div>
               
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="h-4 w-4 text-primary" />
-                  <h4 className="font-semibold text-sm">Still here?</h4>
+                <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                  <h4 className="font-semibold text-xs sm:text-sm">Still here?</h4>
                 </div>
                 
-                <p className="text-xs text-muted-foreground mb-3">
+                <p className="text-xs text-muted-foreground mb-2 sm:mb-3">
                   You&apos;ve been browsing for a while. Ready to discuss your project?
                 </p>
                 
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Button
                     onClick={openCalendlyBooking}
                     size="sm"
-                    className="flex-1 rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+                    className="flex-1 rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 touch-manipulation min-h-[40px]"
                   >
                     <Calendar className="h-3 w-3 mr-1" />
-                    Book Now
+                    <span className="text-xs sm:text-sm">Book Now</span>
                   </Button>
                   
                   <Button
                     onClick={dismissNotification}
                     variant="ghost"
                     size="sm"
-                    className="px-3"
+                    className="px-3 touch-manipulation min-h-[40px] sm:min-h-0"
                   >
-                    Later
+                    <span className="text-xs sm:text-sm">Later</span>
                   </Button>
                 </div>
               </div>
             </div>
             
             {/* Idle time indicator */}
-            <div className="mt-3 text-xs text-muted-foreground text-center">
+            <div className="mt-2 sm:mt-3 text-xs text-muted-foreground text-center">
               Idle for {getTimeSinceIdle()}s
             </div>
           </div>

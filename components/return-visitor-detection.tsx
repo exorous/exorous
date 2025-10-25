@@ -72,17 +72,17 @@ export default function ReturnVisitorDetection({ className = "" }: ReturnVisitor
             stiffness: 300, 
             damping: 30 
           }}
-          className={`fixed top-20 left-1/2 transform -translate-x-1/2 z-50 max-w-sm w-full mx-4 ${className}`}
+          className={`fixed top-16 sm:top-20 left-1/2 transform -translate-x-1/2 z-50 max-w-sm w-full mx-2 sm:mx-4 ${className}`}
         >
-          <div className="bg-background border border-border rounded-xl shadow-lg p-4 relative">
+          <div className="bg-background border border-border rounded-xl shadow-lg p-3 sm:p-4 relative">
             <button
               onClick={dismissWelcome}
-              className="absolute top-2 right-2 p-1 hover:bg-muted rounded-full transition-colors"
+              className="absolute top-2 right-2 p-1 hover:bg-muted rounded-full transition-colors touch-manipulation"
             >
               <X className="h-4 w-4" />
             </button>
             
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2 sm:gap-3">
               <motion.div
                 animate={{ 
                   scale: [1, 1.2, 1],
@@ -93,18 +93,18 @@ export default function ReturnVisitorDetection({ className = "" }: ReturnVisitor
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="p-2 rounded-full bg-primary/10 text-primary flex-shrink-0"
+                className="p-1.5 sm:p-2 rounded-full bg-primary/10 text-primary flex-shrink-0"
               >
-                <Star className="h-5 w-5" />
+                <Star className="h-4 w-4 sm:h-5 sm:w-5" />
               </motion.div>
               
               <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="h-4 w-4 text-primary" />
-                  <h4 className="font-semibold text-sm">Welcome back!</h4>
+                <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                  <h4 className="font-semibold text-xs sm:text-sm">Welcome back!</h4>
                 </div>
                 
-                <p className="text-xs text-muted-foreground mb-3">
+                <p className="text-xs text-muted-foreground mb-2 sm:mb-3">
                   Great to see you again! This is your visit #{visitCount}. 
                   Ready to discuss your project?
                 </p>
@@ -112,10 +112,10 @@ export default function ReturnVisitorDetection({ className = "" }: ReturnVisitor
                 <Button
                   onClick={openCalendlyBooking}
                   size="sm"
-                  className="w-full rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+                  className="w-full rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 touch-manipulation min-h-[40px]"
                 >
                   <Calendar className="h-3 w-3 mr-1" />
-                  Book Your Consultation
+                  <span className="text-xs sm:text-sm">Book Your Consultation</span>
                 </Button>
               </div>
             </div>

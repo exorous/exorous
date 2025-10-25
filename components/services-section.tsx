@@ -1,24 +1,21 @@
 "use client";
 
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Code, 
   Paintbrush, 
   Smartphone, 
   LineChart, 
   Bot,
-  Zap,
-  ChevronLeft,
-  ChevronRight
+  Zap
 } from 'lucide-react';
 import MotionSection from './motion-section';
 import ServiceCard from './service-card';
+import AnimatedServiceCard from './animated-service-card';
 
 export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollIndex, setScrollIndex] = useState(0);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -60,31 +57,6 @@ export default function ServicesSection() {
     }
   ];
 
-  const scrollLeft = () => {
-    if (scrollIndex > 0) {
-      setScrollIndex(scrollIndex - 1);
-      const container = scrollContainerRef.current;
-      if (container) {
-        container.scrollBy({
-          left: -470,
-          behavior: 'smooth',
-        });
-      }
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollIndex < services.length - 3) {
-      setScrollIndex(scrollIndex + 1);
-      const container = scrollContainerRef.current;
-      if (container) {
-        container.scrollBy({
-          left: 470,
-          behavior: 'smooth',
-        });
-      }
-    }
-  };
 
   return (
     <section id="services" className="py-24 relative overflow-hidden" ref={containerRef}>
@@ -98,26 +70,6 @@ export default function ServicesSection() {
               Our comprehensive suite of services covers everything you need for a successful digital presence.
             </p>
           </MotionSection>
-          
-          {/* Navigation Buttons */}
-          {/* <div className="hidden md:flex space-x-2">
-            <button 
-              onClick={scrollLeft}
-              disabled={scrollIndex === 0}
-              className="p-2 rounded-full border hover:bg-secondary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Previous services"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button 
-              onClick={scrollRight}
-              disabled={scrollIndex >= services.length - 3}
-              className="p-2 rounded-full border hover:bg-secondary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Next services"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          </div> */}
         </div>
       </div>
 
@@ -125,69 +77,20 @@ export default function ServicesSection() {
       <div className="md:hidden px-4 grid grid-cols-1 gap-4 sm:gap-6">
         {services.map((service, index) => (
           <MotionSection key={index} delay={0.1 * index}>
-            <ServiceCard {...service} index={index} />
+            <AnimatedServiceCard {...service} index={index} />
           </MotionSection>
         ))}
       </div>
 
-      {/* Tablet View (2 columns) */}
-      <div className="hidden md:grid lg:hidden px-4 grid-cols-2 gap-4">
-        {services.map((service, index) => (
-          <MotionSection key={index} delay={0.1 * index}>
-            <ServiceCard {...service} index={index} />
-          </MotionSection>
-        ))}
-      </div>
-
-      {/* Desktop View (Scrollable Cards) */}
-      <div className="hidden lg:block relative">
-        {/* For framer-motion animation on scroll */}
-        <motion.div 
-          className="hidden"
-          style={{ x }}
-        />
-        
-        {/* Actual scrollable container */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex space-x-6 pl-8 mb-8 overflow-x-hidden scroll-smooth"
-        >
-          <AnimatePresence>
-            {services.map((service, index) => (
-              <motion.div 
-                key={index} 
-                className="w-[450px] flex-shrink-0 py-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <ServiceCard {...service} index={index} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+      {/* Desktop/Tablet View (2 rows of 3 cards each) */}
+      <div className="hidden md:block px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {services.map((service, index) => (
+            <MotionSection key={index} delay={0.1 * index}>
+              <AnimatedServiceCard {...service} index={index} />
+            </MotionSection>
+          ))}
         </div>
-        
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
-
-          <div className="hidden md:flex space-x-2 justify-center">
-            <button 
-              onClick={scrollLeft}
-              disabled={scrollIndex === 0}
-              className="p-2 rounded-full border hover:bg-secondary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Previous services"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button 
-              onClick={scrollRight}
-              disabled={scrollIndex >= services.length - 3}
-              className="p-2 rounded-full border hover:bg-secondary transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Next services"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          </div>
       </div>
     </section>
   );

@@ -34,14 +34,17 @@ export default function BehavioralTriggers({
   }
 
   return (
-    <div className={`behavioral-triggers-container ${className}`}>
+    <div className={`behavioral-triggers-container relative ${className}`}>
       {children}
 
       {/* Behavioral Trigger Components */}
-
-      {enableExitIntent && <ExitIntentPopup />}
-      {enableIdleDetection && <IdleDetection />}
-      {enableReturnVisitor && <ReturnVisitorDetection />}
+      <div className="fixed inset-0 pointer-events-none z-40">
+        <div className="relative w-full h-full">
+          {enableExitIntent && <ExitIntentPopup />}
+          {enableIdleDetection && <IdleDetection />}
+          {enableReturnVisitor && <ReturnVisitorDetection />}
+        </div>
+      </div>
     </div>
   );
 }
