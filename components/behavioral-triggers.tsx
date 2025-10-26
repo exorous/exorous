@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ExitIntentPopup from "./exit-intent-popup";
 import IdleDetection from "./idle-detection";
 import ReturnVisitorDetection from "./return-visitor-detection";
 
@@ -40,7 +39,6 @@ export default function BehavioralTriggers({
       {/* Behavioral Trigger Components */}
       <div className="fixed inset-0 pointer-events-none z-40">
         <div className="relative w-full h-full">
-          {enableExitIntent && <ExitIntentPopup />}
           {enableIdleDetection && <IdleDetection />}
           {enableReturnVisitor && <ReturnVisitorDetection />}
         </div>
