@@ -1,7 +1,6 @@
 "use client";
 import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
-import ProcessSection from "@/components/process-section";
 import ProjectsSection from "@/components/projects-section";
 import AboutSection from "@/components/about-section";
 import ContactSection from "@/components/contact-section";
@@ -24,7 +23,6 @@ export default function Home() {
     <main className="relative">
       <HeroSection />
       <ServicesSection />
-      <ProcessSection />
       <ProjectsSection />
       <AboutSection />
       <ContactSection />

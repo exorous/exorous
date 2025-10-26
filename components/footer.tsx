@@ -17,7 +17,6 @@ export default function Footer() {
       links: [
         { label: "Home", href: "#hero" },
         { label: "Services", href: "#services" },
-        { label: "Process", href: "#process" },
         { label: "Projects", href: "#projects" },
         { label: "About", href: "#about" },
         { label: "Contact", href: "#contact" },
@@ -29,9 +28,7 @@ export default function Footer() {
         { label: "Web Development", href: "#" },
         { label: "UI/UX Design", href: "#" },
         { label: "Mobile Apps", href: "#" },
-        { label: "SEO & Analytics", href: "#" },
-        { label: "CMS Solutions", href: "#" },
-        { label: "Support & Maintenance", href: "#" },
+        { label: "AI Agent Development", href: "#" },
       ],
     },
     {

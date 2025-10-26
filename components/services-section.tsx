@@ -11,7 +11,6 @@ import {
   Zap
 } from 'lucide-react';
 import MotionSection from './motion-section';
-import ServiceCard from './service-card';
 import AnimatedServiceCard from './animated-service-card';
 
 export default function ServicesSection() {
@@ -41,19 +40,9 @@ export default function ServicesSection() {
       description: "Native and cross-platform applications built for seamless user experiences across all devices.",
     },
     {
-      icon: <LineChart className="h-10 w-10" />,
-      title: "SEO & Analytics",
-      description: "Data-driven strategies to improve search rankings and user engagement metrics.",
-    },
-    {
       icon: <Bot className="h-10 w-10" />,
       title: "AI Agent Development",
       description: "Intelligent AI agents and chatbots that automate customer interactions and enhance user experience.",
-    },
-    {
-      icon: <Zap className="h-10 w-10" />,
-      title: "Business Automation",
-      description: "Streamline your operations with custom automation solutions that reduce manual work and increase efficiency.",
     }
   ];
 
@@ -73,18 +62,9 @@ export default function ServicesSection() {
         </div>
       </div>
 
-      {/* Mobile View (Vertical Cards) */}
-      <div className="md:hidden px-4 grid grid-cols-1 gap-4 sm:gap-6">
-        {services.map((service, index) => (
-          <MotionSection key={index} delay={0.1 * index}>
-            <AnimatedServiceCard {...service} index={index} />
-          </MotionSection>
-        ))}
-      </div>
-
-      {/* Desktop/Tablet View (2 rows of 3 cards each) */}
-      <div className="hidden md:block px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+      {/* Services Grid */}
+      <div className="px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
           {services.map((service, index) => (
             <MotionSection key={index} delay={0.1 * index}>
               <AnimatedServiceCard {...service} index={index} />

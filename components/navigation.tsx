@@ -33,9 +33,9 @@ export default function Navigation() {
   const navLinks = [
     { name: 'Home', href: '/#hero' },
     { name: 'Services', href: '/#services' },
-    { name: 'Process', href: '/#process' },
     { name: 'Projects', href: '/#projects' },
     { name: 'About', href: '/#about' },
+    { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/#contact' },
   ];
 

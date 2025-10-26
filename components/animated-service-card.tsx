@@ -22,7 +22,7 @@ export default function AnimatedServiceCard({
   return (
     <div
       className={cn(
-        "max-w-sm w-full mx-auto p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group",
+        "max-w-sm w-full mx-auto p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col",
         className
       )}
     >
@@ -32,7 +32,7 @@ export default function AnimatedServiceCard({
       <h3 className="text-lg font-semibold text-foreground py-2 group-hover:text-primary transition-colors">
         {title}
       </h3>
-      <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
         {description}
       </p>
     </div>

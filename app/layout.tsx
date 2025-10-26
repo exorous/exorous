@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
-import CursorFollower from '@/components/cursor-follower';
 import SmoothScroll from '@/components/smooth-scroll';
 import Analytics from '@/components/Analytics';
 import BehavioralTriggers from '@/components/behavioral-triggers';
@@ -57,10 +56,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SmoothScroll>
-            <CursorFollower />
             <Navigation />
             <BehavioralTriggers>
-              <main className="relative">
+              <main className="relative pt-20 md:pt-24">
                 {children}
               </main>
             </BehavioralTriggers>

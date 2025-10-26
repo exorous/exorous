@@ -51,7 +51,7 @@ export default function HeroSection() {
   }, [text, isDeleting, currentIndex, phrases]);
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden -mt-16">
       {/* Background Animation */}
       <div className="absolute inset-0 z-0">
         <HeroCanvas />
