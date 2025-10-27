@@ -7,6 +7,7 @@ import Footer from '@/components/footer';
 import SmoothScroll from '@/components/smooth-scroll';
 import Analytics from '@/components/Analytics';
 import BehavioralTriggers from '@/components/behavioral-triggers';
+import CookieConsentBanner from '@/components/cookie-consent-banner';
 import Script from 'next/script';
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID || 'G-Q8DY78XBGD'; 
@@ -42,9 +43,19 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){ dataLayer.push(arguments); }
               gtag('js', new Date());
-              gtag('config', '${GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
+              
+              // Check cookie consent
+              const cookieConsent = localStorage.getItem('cookieConsent');
+              
+              gtag('consent', 'default', {
+                analytics_storage: cookieConsent === 'accepted' ? 'granted' : 'denied'
               });
+              
+              if (cookieConsent === 'accepted') {
+                gtag('config', '${GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              }
             `,
           }}
         />
@@ -63,6 +74,7 @@ export default function RootLayout({
               </main>
             </BehavioralTriggers>
             <Footer />
+            <CookieConsentBanner />
           </SmoothScroll>
         </ThemeProvider>
       </body>
