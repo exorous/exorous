@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ExternalLink, MapPin, Clock, Briefcase, CheckCircle, Users, Calendar, DollarSign } from 'lucide-react';
+import { MapPin, Clock, Briefcase, CheckCircle, Users, Calendar, Send } from 'lucide-react';
 import Link from 'next/link';
 import MotionSection from './motion-section';
 
@@ -29,10 +28,6 @@ interface JobDetailsProps {
 }
 
 export default function JobDetails({ job }: JobDetailsProps) {
-  const handleApplyNow = () => {
-    window.open(job.googleFormLink, '_blank');
-  };
-
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Header */}
@@ -66,12 +61,7 @@ export default function JobDetails({ job }: JobDetailsProps) {
                   <span className="font-medium">{job.workingDays}</span>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
-                  <DollarSign className="h-5 w-5 text-primary" />
                   <span className="font-medium">{job.salary}</span>
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Clock className="h-5 w-5 text-primary" />
-                  <span className="font-medium">Posted {new Date(job.postedDate).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
@@ -186,14 +176,15 @@ export default function JobDetails({ job }: JobDetailsProps) {
         {/* Apply Now Button */}
         <MotionSection delay={0.8} direction="up">
           <div className="text-center mt-16">
-            <Button 
-              size="lg" 
-              onClick={handleApplyNow}
-              className="gap-2 px-8 py-3 text-lg"
-            >
-              Apply Now
-              <ExternalLink className="h-5 w-5" />
-            </Button>
+            <Link href={`/careers/${job.id}/apply`}>
+              <Button 
+                size="lg" 
+                className="gap-2 px-8 py-3 text-lg rounded-full"
+              >
+                Apply Now
+                <Send className="h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </MotionSection>
       </div>

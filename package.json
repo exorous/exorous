@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:generate": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -76,6 +79,8 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/three": "^0.176.0"
+    "@types/three": "^0.176.0",
+    "@prisma/client": "^5.19.0",
+    "prisma": "^5.19.0"
   }
 }

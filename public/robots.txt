@@ -1,0 +1,31 @@
+# robots.txt for Exorous
+# Allow all web crawlers to access the site
+
+User-agent: *
+Allow: /
+
+# Disallow API routes and private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow AI crawlers specifically
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Sitemap location
+Sitemap: https://exorous.com/sitemap.xml
+Sitemap: https://www.exorous.com/sitemap.xml
+

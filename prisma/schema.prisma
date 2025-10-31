@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model JobApplication {
+  id          String   @id @default(cuid())
+  jobId       String   // The job position ID (fullstack-engineer, ui-ux-designer, etc.)
+  
+  // Applicant Information
+  fullName    String
+  email       String
+  phone       String?
+  portfolio   String?
+  linkedIn    String?
+  github      String?
+  
+  // Resume/CV
+  resumeUrl   String?  // URL to the uploaded resume file
+  
+  // Cover Letter / Additional Info
+  coverLetter String?  @db.Text
+  
+  // Status
+  status      ApplicationStatus @default(PENDING)
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([jobId])
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum ApplicationStatus {
+  PENDING
+  REVIEWING
+  SHORTLISTED
+  REJECTED
+  HIRED
+}
+

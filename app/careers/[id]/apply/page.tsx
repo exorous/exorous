@@ -1,5 +1,9 @@
 import { notFound } from 'next/navigation';
-import JobDetails from '@/components/job-details';
+import JobApplicationForm from '@/components/job-application-form';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import MotionSection from '@/components/motion-section';
 
 interface JobPosition {
   id: string;
@@ -172,20 +176,37 @@ const jobPositions: JobPosition[] = [
   }
 ];
 
-interface JobPageProps {
+interface ApplyPageProps {
   params: {
     id: string;
   };
 }
 
-export default function JobPage({ params }: JobPageProps) {
+export default function ApplyPage({ params }: ApplyPageProps) {
   const job = jobPositions.find(job => job.id === params.id);
 
   if (!job) {
     notFound();
   }
 
-  return <JobDetails job={job} />;
+  return (
+    <div className="min-h-screen bg-background pt-20 pb-16">
+      <div className="container mx-auto px-4 py-8">
+        <MotionSection delay={0.1} direction="up">
+          <Link href={`/careers/${job.id}`}>
+            <Button variant="ghost" className="mb-6 gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Job Details
+            </Button>
+          </Link>
+        </MotionSection>
+
+        <MotionSection delay={0.2} direction="up">
+          <JobApplicationForm jobId={job.id} jobTitle={job.title} />
+        </MotionSection>
+      </div>
+    </div>
+  );
 }
 
 export function generateStaticParams() {
@@ -193,3 +214,4 @@ export function generateStaticParams() {
     id: job.id,
   }));
 }
+
