@@ -86,11 +86,10 @@ const jobPositions: JobPosition[] = [
       'Attend industry events and networking functions'
     ],
     benefits: [
-      'Professional development opportunities',
-      'Health and wellness benefits',
+      'Remote work opportunities',
+      'Working hours: 10 AM to 7 PM with one hour lunch break',
       'Performance-based bonuses',
-      'Travel opportunities for client meetings',
-      'Dynamic and fast-paced environment'
+      'Collaborative team environment'
     ],
     googleFormLink: 'https://forms.gle/your-business-dev-form-link',
     postedDate: '2025-10-28'
