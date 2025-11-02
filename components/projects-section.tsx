@@ -7,7 +7,6 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MotionSection from './motion-section';
 import ProjectCard from './project-card';
 import Project3DCard from './3d-project-card';
-import Sensai from "./../public/sensai.png";
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -46,12 +45,12 @@ export default function ProjectsSection() {
       projectUrl: "https://creatorhub37.vercel.app",
     },
     {
-      title: "Sens AI",
-      description: "Advance your career with personalized guidance, interview prep, and AI-powered tools for job success.",
-      imageUrl: "/sensai.png",
-      category: "ecommerce",
+      title: "Dentify",
+      description: "AI-powered dental assistant that answers your dental questions instantly, helps you book smart appointments, and provides personalized care recommendations. Available 24/7.",
+      imageUrl: "/dentify.png",
+      category: "dashboard",
       tags: [],
-      projectUrl: "https://sensai37.vercel.app",
+      projectUrl: "https://dentify37.vercel.app",
     },
     {
       title: "Short Link",
