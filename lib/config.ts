@@ -8,7 +8,7 @@ export const config = {
         name: 'Exorous',
         email: 'contact@exorous.com',
         phone: '+880 1813316904',
-        address: 'Mirpur DOHS, Dhaka, Bangladesh',
+        address: 'Extension Pallabi, Mirpur 11.5, Dhaka, Bangladesh',
     }
 } as const;
 

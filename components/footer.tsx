@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, ExternalLink, Twitter, Linkedin, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Sparkles, ExternalLink, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
@@ -45,7 +45,6 @@ export default function Footer() {
     // { name: "Twitter", href: "https://twitter.com", icon: Twitter },
     { name: "LinkedIn", href: "https://www.linkedin.com/company/exorous", icon: <Linkedin/> },
     // { name: "GitHub", href: "https://github.com" },
-    { name: "Facebook", href: "https://www.facebook.com/exorous", icon: <Facebook/> },
   ];
 
   return (

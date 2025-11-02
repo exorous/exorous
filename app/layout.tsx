@@ -80,22 +80,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    // Site verification codes (optional - DNS verification is preferred)
-    // Google: Already verified via DNS - no meta tag needed
-    // Bing Webmaster Tools verification
-    // Get your code from: https://www.bing.com/webmasters
-    other: {
-      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && {
-        'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
-      }),
-      // Yandex Webmaster verification
-      // Get your code from: https://webmaster.yandex.com
-      ...(process.env.NEXT_PUBLIC_YANDEX_VERIFICATION && {
-        'yandex-verification': process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
-      }),
-    },
-  },
 };
 
 export default function RootLayout({
@@ -123,7 +107,7 @@ export default function RootLayout({
                  addressLocality: 'Dhaka',
                  addressRegion: 'Dhaka',
                  addressCountry: 'BD',
-                 streetAddress: 'Mirpur DOHS',
+                 streetAddress: 'Extension Pallabi, Mirpur 11.5',
                },
                contactPoint: {
                  '@type': 'ContactPoint',
@@ -171,6 +155,26 @@ export default function RootLayout({
                   page_path: window.location.pathname,
                 });
               }
+            `,
+          }}
+        />
+        <Script
+          id="apollo-tracker"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function initApollo(){
+                var n=Math.random().toString(36).substring(7),
+                o=document.createElement("script");
+                o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,
+                o.async=true,
+                o.defer=true,
+                o.onload=function(){
+                  window.trackingFunctions.onLoad({appId:"68ebeb6ff3ac340021c33295"})
+                },
+                document.head.appendChild(o);
+              }
+              initApollo();
             `,
           }}
         />
