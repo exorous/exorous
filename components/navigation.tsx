@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/theme-toggle';
 import Image from 'next/image';
 import { trackButtonClick } from '@/lib/gtag';
+import { config } from '@/lib/config';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +73,11 @@ export default function Navigation() {
             ))}
           </ul>
           <ThemeToggle />
-          <Link href={"/#contact"}>
+          <Link 
+            href={config.calendly.mainBooking}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
           <Button 
             size="sm"
             className="rounded-full text-sm"
@@ -120,7 +125,11 @@ export default function Navigation() {
               ))}
               <li className="pt-2">
                
-                  <Link href={"/#contact"}>
+                  <Link 
+                    href={config.calendly.mainBooking}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
           <Button 
             className="w-full rounded-full"
             onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
