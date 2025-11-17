@@ -35,7 +35,7 @@ export default function Navigation() {
     { name: 'Services', href: '/#services' },
     { name: 'Projects', href: '/#projects' },
     { name: 'About', href: '/#about' },
-    { name: 'Careers', href: '/careers' },
+    { name: 'Careers', href: '/career' },
     { name: 'Contact', href: '/#contact' },
   ];
 
