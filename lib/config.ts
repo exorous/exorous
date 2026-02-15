@@ -16,9 +16,9 @@ export const config = {
 export const meetingTypes = [
     {
         id: 'consultation',
-        title: 'Free Consultation',
+        title: 'Free Automation Audit',
         duration: '30 minutes',
-        description: 'Discuss your project and get expert advice',
+        description: 'Analyze your workflows and identify automation opportunities',
         price: 'Free',
         calendlyUrl: config.calendly.mainBooking
     },

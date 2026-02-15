@@ -2,116 +2,128 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  Lightbulb, 
-  FileSearch, 
-  Code as CodeIcon, 
+import {
+  Lightbulb,
+  FileSearch,
+  Code as CodeIcon,
   Rocket,
   ArrowDownToLine
 } from 'lucide-react';
 import MotionSection from './motion-section';
 
+const steps = [
+  {
+    icon: <Lightbulb className="h-6 w-6" />,
+    title: "Business Analysis",
+    description: "We analyze your current workflow to identify bottlenecks, repetitive tasks, and high-impact automation opportunities.",
+  },
+  {
+    icon: <FileSearch className="h-6 w-6" />,
+    title: "Automation Strategy Design",
+    description: "We design a customized AI architecture tailored to your specific needs, selecting the right agents and tools.",
+  },
+  {
+    icon: <CodeIcon className="h-6 w-6" />,
+    title: "System Development",
+    description: "We build and integrate AI agents, automation workflows, and connect them seamlessly with your existing stack.",
+  },
+  {
+    icon: <Rocket className="h-6 w-6" />,
+    title: "Deployment & Optimization",
+    description: "We launch your system, monitor performance, and continuously optimize it to ensure maximum efficiency and ROI.",
+  },
+];
+
 export default function ProcessSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start center", "end center"]
   });
-  
-  const progressLineHeight = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['0%', '100%']
-  );
 
-  const steps = [
-    {
-      icon: <Lightbulb className="h-6 w-6" />,
-      title: "Discovery",
-      description: "We start by understanding your business goals, target audience, and project requirements through detailed consultations.",
-    },
-    {
-      icon: <FileSearch className="h-6 w-6" />,
-      title: "Strategy & Design",
-      description: "Our team creates the blueprint for your project, including wireframes, mockups, and a comprehensive development strategy.",
-    },
-    {
-      icon: <CodeIcon className="h-6 w-6" />,
-      title: "Development",
-      description: "We bring designs to life with clean, efficient code, regular updates, and ongoing quality assurance throughout the build.",
-    },
-    {
-      icon: <Rocket className="h-6 w-6" />,
-      title: "Launch & Growth",
-      description: "We deploy your project, provide training, and establish ongoing maintenance plans to ensure continued success.",
-    },
-  ];
+  const progressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="process" className="py-24 relative" ref={containerRef}>
-      <div className="container mx-auto px-4">
-        <MotionSection className="mb-12 sm:mb-16 text-center px-4">
-          <h2 className="text-base sm:text-lg font-medium text-primary mb-2">Our Process</h2>
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">How We Work</h3>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Our streamlined process ensures we deliver exceptional results 
-            while keeping you informed and involved at every stage.
+    <section id="process" className="py-32 relative overflow-hidden" ref={containerRef}>
+      <div className="absolute inset-0 z-0 bg-black" />
+      <div className="container mx-auto px-4 relative z-10">
+        <MotionSection className="mb-24 text-center px-4">
+          <h2 className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">Our Process</h2>
+          <h3 className="text-4xl md:text-5xl font-bold mb-6">How We Work</h3>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            From chaos to clarity in four steps.
           </p>
         </MotionSection>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Progress Line */}
-          <div className="absolute left-[19px] md:left-1/2 top-0 w-1 md:w-1 h-full bg-muted transform md:-translate-x-1/2">
-            <motion.div 
-              className="absolute top-0 left-0 w-full bg-primary"
-              style={{ height: progressLineHeight }}
+          {/* Central Line Background */}
+          <div className="absolute left-[19px] md:left-1/2 top-0 w-1 md:w-1 h-full bg-zinc-900 transform md:-translate-x-1/2 rounded-full overflow-hidden">
+            {/* Tracer Beam */}
+            <motion.div
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-primary via-cyan-400 to-emerald-400 shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+              style={{ height: progressHeight }}
             />
           </div>
 
           {/* Process Steps */}
-          {steps.map((step, index) => (
-            <div 
-              key={index}
-              className={`relative flex md:items-center mb-16 ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
-            >
-              {/* Timeline Node */}
-              <div className="absolute left-0 md:static flex items-center justify-center z-10">
-                <div className="relative flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary bg-background">
-                  <span className="animate-pulse absolute w-12 h-12 rounded-full bg-primary/20" />
-                  <span className="relative z-10 text-primary font-bold">{index + 1}</span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <MotionSection
-                className={`ml-14 md:ml-0 px-4 sm:px-6 py-4 sm:py-6 rounded-lg glass-panel w-full md:w-[calc(50%-2rem)] ${
-                  index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'
-                }`}
-                delay={0.1 * index}
-                direction={index % 2 === 0 ? 'right' : 'left'}
-              >
-                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                  <div className="p-1.5 sm:p-2 rounded-md bg-primary/10 text-primary">
-                    {step.icon}
-                  </div>
-                  <h4 className="text-lg sm:text-xl font-bold">{step.title}</h4>
-                </div>
-                <p className="text-sm sm:text-base text-muted-foreground">{step.description}</p>
-              </MotionSection>
-            </div>
-          ))}
-
-          {/* Final Node */}
-          <div className="absolute bottom-[-20px] left-[19px] md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center z-10">
-            {/* <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary">
-              <ArrowDownToLine className="h-5 w-5 text-white" />
-            </div> */}
+          <div className="flex flex-col gap-24 relative">
+            {steps.map((step, index) => (
+              <ProcessStep
+                key={index}
+                step={step}
+                index={index}
+                total={steps.length}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ProcessStep({ step, index, total, scrollYProgress }: { step: any, index: number, total: number, scrollYProgress: any }) {
+  // Calculate threshold for this step activation
+  // e.g. 4 steps: 0.0, 0.33, 0.66, 0.99 (approx)
+  const threshold = index / (total - 0.5);
+
+  // Create a strict boolean transform for activation state would be ideal, but let's use opacity variants based on a simple check in render or useTransform
+  const isActive = useTransform(scrollYProgress, (value: number) => value > threshold - 0.1);
+  const opacity = useTransform(scrollYProgress, [threshold - 0.2, threshold], [0.3, 1]);
+  const scale = useTransform(scrollYProgress, [threshold - 0.2, threshold], [0.9, 1]);
+
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      style={{ opacity, scale }}
+      className={`relative flex md:items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+    >
+      {/* Timeline Node */}
+      <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center z-20">
+        <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-black border-4 border-zinc-900 transition-colors duration-500 timeline-node">
+          <motion.div
+            style={{ opacity: useTransform(scrollYProgress, (v: number) => v > threshold ? 1 : 0) }}
+            className="absolute inset-0 rounded-full bg-primary shadow-[0_0_15px_rgba(34,211,238,0.8)]"
+          />
+          <span className="relative z-10 text-xs font-bold text-white">{index + 1}</span>
+        </div>
+      </div>
+
+      {/* Content Card */}
+      <div className={`ml-16 md:ml-0 w-full md:w-[calc(50%-3rem)] ${isEven ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
+        <div className={`glass-panel p-8 rounded-2xl border transition-all duration-500 hover:border-primary/30 group ${isEven ? 'md:ml-auto' : 'md:mr-auto'}`}>
+          <div className={`mb-4 inline-flex p-3 rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-110 transition-transform duration-300 ${isEven ? 'md:ml-auto' : ''}`}>
+            {step.icon}
+          </div>
+          <h4 className="text-2xl font-bold text-white mb-3">{step.title}</h4>
+          <p className="text-muted-foreground leading-relaxed">
+            {step.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
   );
 }

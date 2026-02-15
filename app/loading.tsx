@@ -1,170 +1,102 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Loading() {
-  const [progress, setProgress] = useState(0)
-  const [stars, setStars] = useState<Array<{
-    top: number;
-    left: number;
-    width: number;
-    height: number;
-    opacity: number;
-    animation: string;
-  }>>([])
+  const [complete, setComplete] = useState(false);
+  const [percent, setPercent] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress((prev) => (prev < 100 ? prev + 1 : prev))
-    }, 30)
+    const timer = setInterval(() => {
+      setPercent((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          setTimeout(() => setComplete(true), 1200);
+          return 100;
+        }
+        return Math.min(100, prev + 1);
+      });
+    }, 30);
+    return () => clearInterval(timer);
+  }, []);
 
-    return () => clearTimeout(timer)
-  }, [progress])
-
-  useEffect(() => {
-    // Generate stars only on client side to avoid hydration mismatch
-    const generatedStars = Array.from({ length: 100 }).map(() => ({
-      top: Math.random() * 100,
-      left: Math.random() * 100,
-      width: Math.random() * 3,
-      height: Math.random() * 3,
-      opacity: Math.random() * 0.7 + 0.3,
-      animation: `twinkle ${Math.random() * 5 + 3}s infinite ${Math.random() * 5}s`,
-    }))
-    setStars(generatedStars)
-  }, [])
+  // Circular progress math
+  const radius = 80;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (percent / 100) * circumference;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden text-white px-4">
-      {/* Stars background */}
-      <div className="absolute inset-0 z-0">
-        {stars.map((star, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white"
-            style={{
-              top: `${star.top}%`,
-              left: `${star.left}%`,
-              width: `${star.width}px`,
-              height: `${star.height}px`,
-              opacity: star.opacity,
-              animation: star.animation,
-            }}
-          />
-        ))}
+    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black overflow-hidden select-none font-sans">
+      {/* Dynamic Background for Depth */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.1)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-grid-white/[0.015] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
       </div>
 
-      {/* Planets */}
-      <div
-        className="absolute rounded-full bg-cyan-900/30 blur-2xl"
-        style={{
-          width: "150px",
-          height: "150px",
-          top: "20%",
-          left: "15%",
-        }}
-      />
-      <div
-        className="absolute rounded-full bg-cyan-800/20 blur-xl"
-        style={{
-          width: "80px",
-          height: "80px",
-          bottom: "25%",
-          right: "20%",
-        }}
-      />
+      <div className="relative z-10 flex flex-col items-center gap-12">
+        {/* Branding */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl md:text-5xl font-black text-white/90 tracking-[0.6em] text-center"
+        >
+          EXOROUS
+        </motion.h1>
 
-      <div className="z-10 text-center max-w-3xl px-4">
-        <div className="flex flex-col items-center">
-          {/* Logo placeholder */}
-          <div className="mb-6 sm:mb-8">
-            <div className="text-2xl sm:text-3xl font-bold">
-              Ex<span className="text-cyan-400">orous</span>
-            </div>
-          </div>
-
-          {/* Orbital loading animation */}
-          <div className="relative w-24 h-24 sm:w-32 sm:h-32 mb-6 sm:mb-8">
-            <div className="absolute inset-0 rounded-full border-2 border-gray-800 opacity-30"></div>
-
-            {/* Orbital rings */}
-            <div
-              className="absolute inset-0 rounded-full border border-gray-700 animate-spin"
-              style={{ animationDuration: "8s" }}
-            ></div>
-            <div
-              className="absolute inset-2 rounded-full border border-gray-700 animate-spin"
-              style={{ animationDuration: "6s" }}
-            ></div>
-            <div
-              className="absolute inset-4 rounded-full border border-gray-700 animate-spin"
-              style={{ animationDuration: "4s" }}
-            ></div>
-
-            {/* Planets */}
-            <div
-              className="absolute w-2 h-2 bg-cyan-400 rounded-full"
+        {/* Circular Progress Indicator */}
+        <div className="relative flex items-center justify-center">
+          <svg className="w-48 h-48 md:w-56 md:h-56 -rotate-90">
+            {/* Background Ring */}
+            <circle
+              cx="50%"
+              cy="50%"
+              r={radius}
+              className="fill-none stroke-white/5"
+              strokeWidth="4"
+            />
+            {/* Progress Ring */}
+            <motion.circle
+              cx="50%"
+              cy="50%"
+              r={radius}
+              className="fill-none stroke-primary"
+              strokeWidth="4"
+              strokeLinecap="round"
+              initial={{ strokeDasharray: circumference, strokeDashoffset: circumference }}
+              animate={{ strokeDashoffset }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               style={{
-                top: "50%",
-                left: "0%",
-                transform: "translate(-50%, -50%)",
-                animation: "orbit 8s linear infinite",
+                filter: "drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.5))"
               }}
-            ></div>
-            <div
-              className="absolute w-3 h-3 bg-cyan-500 rounded-full"
-              style={{
-                top: "50%",
-                left: "12.5%",
-                transform: "translate(-50%, -50%)",
-                animation: "orbit 6s linear infinite",
-              }}
-            ></div>
-            <div
-              className="absolute w-4 h-4 bg-cyan-600 rounded-full"
-              style={{
-                top: "50%",
-                left: "25%",
-                transform: "translate(-50%, -50%)",
-                animation: "orbit 4s linear infinite",
-              }}
-            ></div>
+            />
+          </svg>
 
-            {/* Center planet */}
-            <div className="absolute w-8 h-8 bg-cyan-400 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glow"></div>
+          {/* Percentage */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-4xl md:text-5xl font-black text-white tabular-nums tracking-tighter"
+            >
+              {percent}<span className="text-base font-light ml-0.5 text-primary/80">%</span>
+            </motion.span>
           </div>
-
-          {/* Progress bar */}
-          <div className="w-48 sm:w-64 h-1 bg-gray-800 rounded-full overflow-hidden mb-2">
-            <div
-              className="h-full bg-cyan-400 transition-all duration-100 ease-out"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-          <div className="text-xs sm:text-sm text-gray-400">{progress < 100 ? "Loading..." : "Ready"}</div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 sm:bottom-8 text-center text-gray-500 text-xs sm:text-sm px-4">
-        <p>Exorous Digital Experience Agency</p>
-      </div>
-
-      {/* CSS for animations */}
-      <style jsx global>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 1; }
-        }
-        
-        @keyframes orbit {
-          from { transform: rotate(0deg) translateX(16px) rotate(0deg); }
-          to { transform: rotate(360deg) translateX(16px) rotate(-360deg); }
-        }
-        
-        .glow {
-          box-shadow: 0 0 15px 5px rgba(11, 206, 239, 0.3);
-        }
-      `}</style>
+      {/* Transition Overlay */}
+      <AnimatePresence>
+        {complete && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 z-[110] bg-black"
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
+        )}
+      </AnimatePresence>
     </div>
-  )
+  );
 }

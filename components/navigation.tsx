@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/theme-toggle';
@@ -14,30 +14,53 @@ import { config } from '@/lib/config';
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = ['hero', 'bottleneck', 'demo', 'services', 'pricing', 'faq', 'contact'];
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/#hero' },
-    { name: 'Services', href: '/#services' },
-    { name: 'Projects', href: '/#projects' },
-    { name: 'About', href: '/#about' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: '/#contact' },
+    { name: 'Home', href: '#hero', id: 'hero' },
+    { name: 'Bottleneck', href: '#bottleneck', id: 'bottleneck' },
+    { name: 'Demo', href: '#demo', id: 'demo' },
+    { name: 'Services', href: '#services', id: 'services' },
+    { name: 'Packages', href: '#pricing', id: 'pricing' },
+    { name: 'FAQ', href: '#faq', id: 'faq' },
+    { name: 'Audit', href: '#contact', id: 'contact' },
   ];
 
   return (
@@ -46,12 +69,11 @@ export default function Navigation() {
       isScrolled ? "bg-background/80 py-3 shadow-md" : "bg-transparent py-5"
     )}>
       <nav className="container mx-auto flex justify-between items-center px-4">
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="flex items-center gap-2 text-xl font-bold"
           onClick={closeMenu}
         >
-          {/* <Sparkles className="h-6 w-6 text-primary" /> */}
           <Image src={"/logo.png"} height={30} width={30} alt='Exorous' />
           <span className="gradient-text mt-3">Exorous</span>
         </Link>
@@ -61,30 +83,36 @@ export default function Navigation() {
           <ul className="flex gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <Link 
+                <Link
                   href={link.href}
-                  className="text-sm lg:text-base text-muted-foreground hover:text-primary transition-colors relative group"
+                  className={cn(
+                    "text-sm lg:text-base transition-colors relative group",
+                    activeSection === link.id ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"
+                  )}
                   onClick={closeMenu}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                  <span className={cn(
+                    "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
+                    activeSection === link.id ? "w-full" : "w-0 group-hover:w-full"
+                  )} />
                 </Link>
               </li>
             ))}
           </ul>
           <ThemeToggle />
-          <Link 
+          <Link
             href={config.calendly.mainBooking}
             target="_blank"
             rel="noopener noreferrer"
           >
-          <Button 
-            size="sm"
-            className="rounded-full text-sm"
-            onClick={() => trackButtonClick('Book a Meeting', 'desktop-nav')}
-          >
-            Book a Meeting
-          </Button>
+            <Button
+              size="sm"
+              className="rounded-full text-sm"
+              onClick={() => trackButtonClick('Book a Meeting', 'desktop-nav')}
+            >
+              Book a Meeting
+            </Button>
           </Link>
         </div>
 
@@ -114,9 +142,12 @@ export default function Navigation() {
             <ul className="flex flex-col py-4 px-4 space-y-3">
               {navLinks.map((link) => (
                 <li key={link.name} className="w-full">
-                  <Link 
+                  <Link
                     href={link.href}
-                    className="text-base block py-2 hover:text-primary transition-colors"
+                    className={cn(
+                      "text-base block py-2 transition-colors",
+                      activeSection === link.id ? "text-primary font-medium" : "hover:text-primary"
+                    )}
                     onClick={closeMenu}
                   >
                     {link.name}
@@ -124,19 +155,18 @@ export default function Navigation() {
                 </li>
               ))}
               <li className="pt-2">
-               
-                  <Link 
-                    href={config.calendly.mainBooking}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <Link
+                  href={config.calendly.mainBooking}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    className="w-full rounded-full"
+                    onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
                   >
-          <Button 
-            className="w-full rounded-full"
-            onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
-          >
-                  Book a Meeting
-                </Button>
-          </Link>
+                    Book a Meeting
+                  </Button>
+                </Link>
               </li>
             </ul>
           </motion.div>

@@ -10,7 +10,7 @@ import { config } from '@/lib/config';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   const footerLinks = [
     {
       title: "Site Map",
@@ -40,10 +40,10 @@ export default function Footer() {
       ],
     },
   ];
-  
+
   const socialLinks = [
     // { name: "Twitter", href: "https://twitter.com", icon: Twitter },
-    { name: "LinkedIn", href: "https://www.linkedin.com/company/exorous", icon: <Linkedin/> },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/exorous", icon: <Linkedin /> },
     // { name: "GitHub", href: "https://github.com" },
   ];
 
@@ -53,28 +53,28 @@ export default function Footer() {
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-background to-transparent" />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between gap-8 sm:gap-12 mb-12 sm:mb-16">
           <div className="w-full lg:w-1/3 mb-6 sm:mb-8 lg:mb-0">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="flex items-center gap-2 text-lg sm:text-xl font-bold mb-4"
             >
               <Image src={"/logo.png"} height={24} width={24} alt='Exorous' className="sm:h-[30px] sm:w-[30px]" />
               <span className="gradient-text mt-2 sm:mt-3">Exorous</span>
             </Link>
-            
+
             <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 max-w-md">
               Crafting digital experiences that flow. We specialize in creating websites and applications
               that engage users and drive business growth.
             </p>
-            
+
             {/* Contact Information */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary" />
-                <a 
+                <a
                   href={`mailto:${config.app.email}`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
@@ -83,7 +83,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary" />
-                <a 
+                <a
                   href={`tel:${config.app.phone}`}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
@@ -97,7 +97,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            
+
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {socialLinks.map((social, index) => (
                 <a
@@ -113,7 +113,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          
+
           <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {footerLinks.map((column, colIndex) => (
               <div key={colIndex}>
@@ -125,8 +125,8 @@ export default function Footer() {
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      <Link 
-                        href={link.href} 
+                      <Link
+                        href={link.href}
                         className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
                         {link.label}
@@ -138,18 +138,18 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        
+
         <Separator className="my-8" />
-        
+
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
           <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
             © {currentYear} Exorous. All rights reserved.
           </p>
-          
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="rounded-full text-xs sm:text-sm" 
+
+          <Button
+            variant="outline"
+            size="sm"
+            className="rounded-full text-xs sm:text-sm"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Back to Top

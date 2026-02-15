@@ -7,7 +7,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model JobApplication {
@@ -41,11 +40,113 @@ model JobApplication {
   @@index([createdAt])
 }
 
+model Lead {
+  id            String      @id @default(cuid())
+  name          String
+  email         String
+  company       String?
+  source        String?     @default("WEBSITE") // Campaign or traffic source
+  problem       String      @db.Text
+  budget        String?
+  status        LeadStatus  @default(NEW)
+  score         Int?        // 1-100
+  category      LeadCategory? // HOT, WARM, COLD
+  
+  // AI Analysis
+  aiReasoning   String?     @db.Text
+  suggestedReply String?    @db.Text
+
+  // Timestamps
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  aiLogs        AiLog[]
+  emailLogs     EmailLog[]
+  followUps     FollowUp[]
+  
+  stopFollowUps Boolean     @default(false)
+
+  @@index([email])
+  @@index([status])
+  @@index([category])
+}
+
+model AiLog {
+  id        String   @id @default(cuid())
+  leadId    String
+  action    String   // e.g., "SCORING", "REPLY_GENERATION"
+  input     Json
+  output    Json
+  createdAt DateTime @default(now())
+
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+}
+
+model EmailLog {
+  id          String      @id @default(cuid())
+  leadId      String
+  subject     String
+  content     String      @db.Text
+  status      String      // SENT, FAILED
+  sentAt      DateTime    @default(now())
+
+  lead        Lead        @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+}
+
 enum ApplicationStatus {
   PENDING
   REVIEWING
   SHORTLISTED
   REJECTED
   HIRED
+}
+
+enum LeadStatus {
+  NEW
+  QUALIFIED
+  FOLLOWED_UP
+  BOOKED
+  DORMANT
+}
+
+enum LeadCategory {
+  HOT
+  WARM
+  COLD
+}
+
+enum FollowUpStatus {
+  SCHEDULED
+  SENT
+  CANCELLED
+  FAILED
+}
+
+model FollowUp {
+  id          String         @id @default(cuid())
+  leadId      String
+  scheduledAt DateTime
+  sentAt      DateTime?
+  status      FollowUpStatus @default(SCHEDULED)
+  
+  // Content to be generated/sent
+  subject     String?
+  content     String?        @db.Text
+  
+  // Sequence number (e.g., 1 for 2 days, 2 for 4 days)
+  sequenceIndex Int
+
+  lead        Lead           @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([leadId])
+  @@index([scheduledAt])
+  @@index([status])
 }
 

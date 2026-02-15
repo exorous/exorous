@@ -18,10 +18,10 @@ interface ProjectCardProps {
   projectUrl: string;
 }
 
-export default function Project3DCard({ 
-  title, 
-  description, 
-  imageUrl, 
+export default function Project3DCard({
+  title,
+  description,
+  imageUrl,
   category,
   tags,
   index,
@@ -50,7 +50,7 @@ export default function Project3DCard({
           <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-slate-100">
             {title}
           </h3>
-          
+
           <div className="text-sm !m-0 !p-0 font-normal">
             <span className="text-slate-500">
               {description}
@@ -61,9 +61,9 @@ export default function Project3DCard({
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {tags.map((tag, i) => (
-                <Badge 
-                  key={i} 
-                  variant="outline" 
+                <Badge
+                  key={i}
+                  variant="outline"
                   className="bg-primary/10 text-primary border-primary/20 text-xs"
                 >
                   {tag}
@@ -75,16 +75,17 @@ export default function Project3DCard({
 
           {/* View Project Link */}
           <div className="mt-auto pt-2">
-            <Link 
-              href={projectUrl} 
+            <div
               className="flex items-center gap-1 text-primary font-medium text-sm hover:text-primary/80 transition-colors"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent double firing if parent also handles click
                 trackProjectView(title);
                 trackExternalLink(projectUrl, title);
+                window.open(projectUrl, '_blank');
               }}
             >
               View Project <ArrowUpRight className="h-3 w-3" />
-            </Link>
+            </div>
           </div>
         </div>
       </div>

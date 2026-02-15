@@ -1,5 +1,5 @@
 "use client";
-import { animate, motion } from "motion/react";
+import { animate, motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Code, Paintbrush, Smartphone, LineChart, Bot, Zap } from "lucide-react";
@@ -22,7 +22,7 @@ export default function AnimatedServiceCard({
   return (
     <div
       className={cn(
-        "max-w-sm w-full mx-auto p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col",
+        "max-w-sm w-full mx-auto p-6 rounded-xl glass-panel hover:border-primary/30 transition-all duration-300 group h-full flex flex-col",
         className
       )}
     >
@@ -102,7 +102,7 @@ const Sparkles = () => {
   const randomMove = () => Math.random() * 2 - 1;
   const randomOpacity = () => Math.random();
   const random = () => Math.random();
-  
+
   return (
     <div className="absolute inset-0">
       {[...Array(8)].map((_, i) => (
