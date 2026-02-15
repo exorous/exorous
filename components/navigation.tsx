@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { trackButtonClick } from '@/lib/gtag';
-import { config } from '@/lib/config';
+import { calendlyUrl } from '@/lib/config';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,13 +53,10 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#hero', id: 'hero' },
-    { name: 'Bottleneck', href: '#bottleneck', id: 'bottleneck' },
-    { name: 'Demo', href: '#demo', id: 'demo' },
-    { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Packages', href: '#pricing', id: 'pricing' },
-    { name: 'FAQ', href: '#faq', id: 'faq' },
-    { name: 'Audit', href: '#contact', id: 'contact' },
+    { name: 'Problem', href: '#bottleneck', id: 'bottleneck' },
+    { name: 'Solution', href: '#services', id: 'services' },
+    { name: 'Process', href: '#process', id: 'process' },
+    { name: 'Guarantee', href: '#guarantee', id: 'guarantee' },
   ];
 
   return (
@@ -107,16 +104,15 @@ export default function Navigation() {
 
           <div className="flex items-center gap-3">
             <Link
-              href={config.calendly.mainBooking}
+              href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation'}
               target="_blank"
-              rel="noopener noreferrer"
             >
               <Button
                 size="sm"
                 className="rounded-full text-xs font-bold px-4 h-9 bg-primary text-black hover:bg-primary/90"
-                onClick={() => trackButtonClick('Book a Meeting', 'desktop-nav')}
+                onClick={() => trackButtonClick('Book Call', 'desktop-nav')}
               >
-                Book a Meeting
+                Book a Call
               </Button>
             </Link>
           </div>
@@ -166,16 +162,16 @@ export default function Navigation() {
             <div className="h-px bg-white/5 my-2" />
 
             <Link
-              href={config.calendly.mainBooking}
+              href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation'}
               target="_blank"
-              rel="noopener noreferrer"
               className="px-2"
+              onClick={() => closeMenu()}
             >
               <Button
                 className="w-full rounded-xl bg-primary text-black hover:bg-primary/90 font-bold"
-                onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
+                onClick={() => trackButtonClick('Book Call', 'mobile-nav')}
               >
-                Book a Meeting
+                Book a Call
               </Button>
             </Link>
           </motion.div>

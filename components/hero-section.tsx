@@ -2,9 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Zap } from 'lucide-react';
+import { ArrowRight, Bot } from 'lucide-react';
 import HeroCanvas from '@/components/hero-canvas';
 import Link from 'next/link';
+import Image from 'next/image';
+
+
 
 export default function HeroSection() {
   return (
@@ -25,33 +28,32 @@ export default function HeroSection() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold mb-8">
             <Bot className="w-3 h-3" />
-            <span>AI Automation Agency</span>
+            <span>Built for Marketing Agencies</span>
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 tracking-tighter leading-[1.1] text-white">
-            Turn Your Business Into An <br className="hidden md:block" />
+            Scale Your Agency <br className="hidden md:block" />
             <span className="text-glow text-primary">
-              AI-Powered Machine
+              Without Increasing Headcount
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 px-4 leading-relaxed font-light">
-            Eliminate repetitive manual work. We build autonomous AI systems that capture leads,
-            qualify customers, and automate operations 24/7.
+            We build systems that handle your lead qualification, onboarding, and reporting. You focus on strategy and revenue. We handle the rest.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-            <Link href="#contact" className="w-full sm:w-auto">
-              <Button size="lg" className="gap-2 rounded-full text-base font-bold px-8 h-12 w-full shadow-[0_0_20px_rgba(23,194,227,0.3)] hover:shadow-[0_0_30px_rgba(23,194,227,0.5)] transition-shadow bg-primary text-black hover:bg-primary/90">
-                Book a Call <ArrowRight size={18} />
-              </Button>
-            </Link>
-            <Link href="#demo" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="gap-2 rounded-full text-base font-bold px-8 h-12 w-full border-white/10 hover:bg-white/5 text-white">
-                Try AI Demo <Zap size={18} />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Link href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation'} target="_blank">
+                <Button size="lg" className="gap-2 rounded-full text-base font-bold px-8 h-12 w-full shadow-[0_0_20px_rgba(23,194,227,0.3)] hover:shadow-[0_0_30px_rgba(23,194,227,0.5)] transition-shadow bg-primary text-black hover:bg-primary/90">
+                  Book a Call <ArrowRight size={18} />
+                </Button>
+              </Link>
+            </div>
           </div>
+
+          {/* Tools Strip */}
+
 
         </motion.div>
       </div>

@@ -103,7 +103,7 @@ export default function RootLayout({
                 name: 'Exorous',
                 url: siteUrl,
                 logo: `${siteUrl}/logo.png`,
-                description: 'The whizz of web development, design, and digital marketing. We create stunning websites and applications that drive results.',
+                description: 'Done-for-you AI automation agency for marketing agencies. We build custom systems that capture leads, qualify customers, and automate operations 24/7.',
                 address: {
                   '@type': 'PostalAddress',
                   addressLocality: 'Dhaka',
@@ -123,11 +123,12 @@ export default function RootLayout({
                 ],
                 areaServed: 'Worldwide',
                 serviceType: [
-                  'Web Development',
-                  'UI/UX Design',
-                  'Mobile App Development',
-                  'AI Agent Development',
-                  'Digital Marketing',
+                  'Lead Automation Workflows',
+                  'AI Follow-up Systems',
+                  'CRM Automation',
+                  'Client Onboarding Automation',
+                  'Reporting Automation',
+                  'Internal Operations Workflows',
                 ],
               }),
             }}

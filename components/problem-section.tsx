@@ -6,33 +6,33 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const problems = [
     {
         id: "01",
-        title: "Slow Lead Response",
-        description: "Leads turn cold within minutes. Manual follow-ups are too slow to capture high-intent prospects.",
+        title: "Lead Decay",
+        description: "Every minute you wait to respond to a new lead, your conversion chance drops. Manual follow-up is too slow, and it's costing you deals.",
         category: "Sales"
     },
     {
         id: "02",
-        title: "Endless Repetitive Tasks",
-        description: "Your team wastes hours on data entry, scheduling, and basic replies instead of high-value work.",
+        title: "The Fulfillment Treadmill",
+        description: "You sign a client, but then you're stuck onboarding them for weeks. You stop selling to fulfill, and your pipeline dries up.",
         category: "Operations"
     },
     {
         id: "03",
-        title: "Disorganized Workflows",
-        description: "Processes are scattered across emails, spreadsheets, and loose notes, causing friction and errors.",
-        category: "Management"
+        title: "The Hiring Bloat",
+        description: "You hire people to do work that software should do. Your revenue grows, but your margins get tighter with every new head.",
+        category: "Growth"
     },
     {
         id: "04",
-        title: "Lost Sales Opportunities",
-        description: "Potential clients slip through the cracks because no one followed up in time or correctly.",
-        category: "Revenue"
+        title: "Scope Creep",
+        description: "Clients treat you like an employee because your processes aren't rigid. You spend hours on 'quick tasks' that you can't bill for.",
+        category: "Management"
     },
     {
         id: "05",
-        title: "High Operational Costs",
-        description: "Scaling requires hiring more staff for repetitive tasks, bloating your overhead unnecessarily.",
-        category: "Growth"
+        title: "Data Blindness",
+        description: "You don't know your actual profit per client because your reporting is a mess of scattered spreadsheets and dashboard screenshots.",
+        category: "Analytics"
     }
 ];
 
@@ -57,10 +57,10 @@ export default function ProblemSection() {
                         viewport={{ once: true }}
                     >
                         <SectionHeader
-                            badge="The Bottleneck"
-                            title="Manual Work is"
-                            titleHighlighted="Killing Your Growth"
-                            description="You're not limited by ambition. You're limited by bandwidth. Legacy systems and manual inputs are the invisible anchors holding your business back."
+                            badge="The Agency Trap"
+                            title="Why You Can't Scale"
+                            titleHighlighted="Past Your Ceiling"
+                            description="It's not a lead problem. It's a bandwidth problem. You're capping your own growth because your operations rely on humans doing robot work."
                             align="left"
                         />
                     </motion.div>

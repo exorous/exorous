@@ -11,9 +11,9 @@ interface IdleDetectionProps {
   className?: string;
 }
 
-export default function IdleDetection({ 
+export default function IdleDetection({
   idleTime = 30000, // 30 seconds
-  className = "" 
+  className = ""
 }: IdleDetectionProps) {
   const [isIdle, setIsIdle] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
@@ -27,16 +27,16 @@ export default function IdleDetection({
       setLastActivity(Date.now());
       setIsIdle(false);
       setShowNotification(false);
-      
+
       // Clear existing timers
       if (idleTimer) clearTimeout(idleTimer);
       if (notificationTimer) clearTimeout(notificationTimer);
-      
+
       // Set new idle timer
       idleTimer = setTimeout(() => {
         setIsIdle(true);
         trackButtonClick('User Idle Detected', 'idle-detection');
-        
+
         // Show notification after idle is detected
         notificationTimer = setTimeout(() => {
           setShowNotification(true);
@@ -62,18 +62,18 @@ export default function IdleDetection({
       // Cleanup
       if (idleTimer) clearTimeout(idleTimer);
       if (notificationTimer) clearTimeout(notificationTimer);
-      
+
       activityEvents.forEach(event => {
         document.removeEventListener(event, resetIdleTimer, true);
       });
     };
   }, [idleTime]);
 
-  const openCalendlyBooking = () => {
+  const openCalendly = () => {
     if (typeof window !== 'undefined') {
-      const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation';
-      window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
-      trackButtonClick('Idle Detection Booking', 'idle-notification');
+      const url = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation';
+      window.open(url, '_blank', 'noopener,noreferrer');
+      trackButtonClick('Idle Detection Book Click', 'idle-notification');
       setShowNotification(false);
     }
   };
@@ -83,11 +83,6 @@ export default function IdleDetection({
     trackButtonClick('Idle Notification Dismissed', 'idle-detection');
   };
 
-  const getTimeSinceIdle = () => {
-    const seconds = Math.floor((Date.now() - lastActivity) / 1000);
-    return seconds;
-  };
-
   return (
     <AnimatePresence>
       {showNotification && (
@@ -95,72 +90,52 @@ export default function IdleDetection({
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 300, 
-            damping: 30 
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30
           }}
           className={`fixed bottom-4 left-2 right-2 sm:bottom-6 sm:left-6 sm:right-6 md:left-auto md:right-6 md:w-80 z-50 ${className}`}
         >
-          <div className="bg-background border border-border rounded-xl shadow-lg p-3 sm:p-4 relative">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl p-4 relative">
             <button
               onClick={dismissNotification}
-              className="absolute top-2 right-2 p-1 hover:bg-muted rounded-full transition-colors touch-manipulation"
+              className="absolute top-2 right-2 p-1 text-zinc-500 hover:text-white transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
-            
-            <div className="flex items-start gap-2 sm:gap-3">
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="p-1.5 sm:p-2 rounded-full bg-primary/10 text-primary flex-shrink-0"
-              >
-                <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
-              </motion.div>
-              
+
+            <div className="flex items-start gap-3">
+              <div className="p-2 rounded-full bg-primary/10 text-primary flex-shrink-0">
+                <Sparkles className="h-5 w-5" />
+              </div>
+
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                  <h4 className="font-semibold text-xs sm:text-sm">Still here?</h4>
-                </div>
-                
-                <p className="text-xs text-muted-foreground mb-2 sm:mb-3">
-                  You&apos;ve been browsing for a while. Ready to discuss your project?
+                <h4 className="font-bold text-sm text-white mb-1">Spotted an inefficiency?</h4>
+
+                <p className="text-xs text-zinc-400 mb-3 leading-relaxed">
+                  We can find more. Book a quick call and see where you're losing money.
                 </p>
-                
-                <div className="flex flex-col sm:flex-row gap-2">
+
+                <div className="flex items-center gap-2">
                   <Button
-                    onClick={openCalendlyBooking}
+                    onClick={openCalendly}
                     size="sm"
-                    className="flex-1 rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 touch-manipulation min-h-[40px]"
+                    className="flex-1 rounded-full bg-primary text-black hover:bg-primary/90 text-xs font-bold"
                   >
-                    <Calendar className="h-3 w-3 mr-1" />
-                    <span className="text-xs sm:text-sm">Book Now</span>
+                    Book a Call
                   </Button>
-                  
+
                   <Button
                     onClick={dismissNotification}
                     variant="ghost"
                     size="sm"
-                    className="px-3 touch-manipulation min-h-[40px] sm:min-h-0"
+                    className="px-3 text-zinc-500 hover:text-white text-xs"
                   >
-                    <span className="text-xs sm:text-sm">Later</span>
+                    Later
                   </Button>
                 </div>
               </div>
-            </div>
-            
-            {/* Idle time indicator */}
-            <div className="mt-2 sm:mt-3 text-xs text-muted-foreground text-center">
-              Idle for {getTimeSinceIdle()}s
             </div>
           </div>
         </motion.div>

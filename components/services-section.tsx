@@ -1,80 +1,194 @@
 "use client";
 
-import SectionHeader from './section-header';
-import SectionWrapper from './section-wrapper';
-import { Bot, Zap } from 'lucide-react';
-import MotionSection from './motion-section';
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Bot, Zap, Users, FileText, Settings, BarChart3 } from "lucide-react";
+import SectionHeader from "./section-header";
 
 const services = [
   {
-    title: "AI Workflow Automation",
-    description: "Capture, qualify, and respond to leads in real-time. We build intelligent systems that handle follow-ups and CRM updates autonomously.",
-    icon: <Bot className="h-6 w-6 text-primary" />,
-    className: "md:col-span-2",
-    stats: "Instant Qualification"
+    title: "The Growth Engine",
+    description:
+      "Your sales team shouldn't be chasing bad leads. We build systems that engage prospects instantly, qualify them, and only book calls with the ones who have budget.",
+    icon: <Bot className="h-7 w-7 text-primary" />,
+    stats: "0s Response Time",
+    color: "primary",
+    number: "01",
   },
   {
-    title: "AI Sales Automation",
-    description: "Personalized outreach and automated meeting bookings that turn cold prospects into revenue.",
-    icon: <Zap className="h-6 w-6 text-emerald-400" />,
-    className: "md:col-span-1",
-    stats: "+40% Conversion"
+    title: "The Nurture Matrix",
+    description:
+      "Stop losing deals because you forgot to follow up. We automate personalized messages across Email, SMS, and LinkedIn so you stay top-of-mind without lifting a finger.",
+    icon: <Zap className="h-7 w-7 text-emerald-400" />,
+    stats: "+40% Reply Rate",
+    color: "emerald",
+    number: "02",
   },
   {
-    title: "AI Operations",
-    description: "Intelligent data processing and internal workflows that eliminate manual tasks and reduce overhead.",
-    icon: <Zap className="h-6 w-6 text-purple-400" />,
-    className: "md:col-span-1",
-    stats: "24/7 Autonomy"
+    title: "The Data Backbone",
+    description:
+      "Stop guessing. We sync your entire agency so you know exactly which ads are working and which clients are actually profitable.",
+    icon: <Settings className="h-7 w-7 text-purple-400" />,
+    stats: "100% Data Accuracy",
+    color: "purple",
+    number: "03",
   },
   {
-    title: "Customer Support AI",
-    description: "Advanced AI agents that handle complex inquiries across all platforms without human intervention.",
-    icon: <Zap className="h-6 w-6 text-orange-400" />,
-    className: "md:col-span-2",
-    stats: "80% Time Saved"
-  }
+    title: "Onboarding Velocity",
+    description:
+      "Sign a contract, and the project starts itself. Invoices sent, Slack channels created, and ClickUp folders ready—instantly.",
+    icon: <Users className="h-7 w-7 text-orange-400" />,
+    stats: "Day 1 Kickoff",
+    color: "orange",
+    number: "04",
+  },
+  {
+    title: "The Retention Guard",
+    description:
+      "Clients stay longer when they see results. We automate the reporting so they always know exactly what you've done for them.",
+    icon: <BarChart3 className="h-7 w-7 text-cyan-300" />,
+    stats: "Reduced Churn",
+    color: "cyan",
+    number: "05",
+  },
+  {
+    title: "The Admin Killer",
+    description:
+      "Your high-level staff shouldn't be moving files. We automate invoicing and contractor payouts so you can run lean.",
+    icon: <FileText className="h-7 w-7 text-yellow-400" />,
+    stats: "Zero Admin Bloat",
+    color: "yellow",
+    number: "06",
+  },
 ];
 
-export default function ServicesSection() {
+
+
+function ServiceCard({
+  service,
+  index,
+  totalServices,
+  containerProgress,
+}: {
+  service: (typeof services)[number];
+  index: number;
+  totalServices: number;
+  containerProgress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  // Each card gets an equal segment of the scroll
+  const segmentSize = 1 / totalServices;
+  const start = index * segmentSize;
+  const enterEnd = start + segmentSize * 0.3; // card fully enters by 30% of its segment
+  const exitStart = start + segmentSize * 0.7; // card starts exiting at 70%
+  const end = (index + 1) * segmentSize;
+
+  // Slide in from right, hold, slide out left
+  const x = useTransform(
+    containerProgress,
+    [start, enterEnd, exitStart, end],
+    ["100%", "0%", "0%", "-100%"]
+  );
+
+  // Fade in, hold, fade out
+  const opacity = useTransform(
+    containerProgress,
+    [start, enterEnd, exitStart, end],
+    [0, 1, 1, 0]
+  );
+
+  // Scale up on entry, hold, scale down on exit
+  const scale = useTransform(
+    containerProgress,
+    [start, enterEnd, exitStart, end],
+    [0.85, 1, 1, 0.85]
+  );
+
+  // Counter text for progress
+  const progressText = `${String(index + 1).padStart(2, "0")} / ${String(totalServices).padStart(2, "0")}`;
+
   return (
-    <SectionWrapper id="services" compact>
-      <SectionHeader
-        badge="Core AI Services"
-        title="Strategic AI"
-        titleHighlighted="Solutions"
-        description="We build autonomous systems that replace manual effort with intelligent execution."
-      />
+    <motion.div
+      style={{ x, opacity, scale }}
+      className="absolute inset-0 flex items-center justify-center px-4"
+    >
+      <div className="w-full max-w-3xl mx-auto">
+        <div className="relative overflow-hidden rounded-3xl bg-zinc-900/60 border border-white/5 backdrop-blur-sm p-8 sm:p-12 md:p-16">
+          {/* Subtle glow */}
+          <div className="absolute top-0 right-0 w-60 h-60 bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {services.map((service, index) => (
-          <MotionSection
-            key={index}
-            delay={index * 0.1}
-            className={`group relative overflow-hidden rounded-3xl bg-zinc-900/40 border border-white/5 hover:border-primary/40 transition-all duration-500 p-8 flex flex-col justify-between h-[280px] ${service.className}`}
-          >
-            {/* Hover Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl bg-black/50 border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h4 className="text-xl font-bold text-white mb-3 tracking-tight">{service.title}</h4>
-              <p className="text-zinc-400 leading-relaxed text-sm font-light max-w-xs">
-                {service.description}
-              </p>
-            </div>
-
-            <div className="relative z-10 mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-              <span className="text-[10px] font-mono text-zinc-500 tracking-wider">RES-ID: {String(index + 1).padStart(2, '0')}</span>
+          <div className="relative z-10">
+            {/* Top row: number + stats */}
+            <div className="flex items-center justify-between mb-8">
+              <span className="text-xs font-mono text-zinc-600 tracking-widest">
+                {progressText}
+              </span>
               <span className="text-[10px] font-bold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                 {service.stats}
               </span>
             </div>
-          </MotionSection>
-        ))}
+
+            {/* Icon */}
+            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center mb-8">
+              {service.icon}
+            </div>
+
+            {/* Title */}
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 tracking-tight leading-tight">
+              {service.title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed max-w-xl">
+              {service.description}
+            </p>
+          </div>
+        </div>
       </div>
-    </SectionWrapper>
+    </motion.div>
+  );
+}
+
+export default function ServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <section
+      ref={containerRef}
+      id="services"
+      className="relative bg-black"
+      style={{ height: `${(services.length + 1) * 100}vh` }}
+    >
+      {/* Sticky viewport */}
+      <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
+        {/* Header */}
+        <div className="container mx-auto px-4 pt-20 sm:pt-24">
+          <SectionHeader
+            badge="The Solution"
+            title="Introducing The"
+            titleHighlighted="Agency OS"
+            description="A complete infrastructure overhaul. We replace your manual processes with intelligent automation systems."
+          />
+        </div>
+
+        {/* Cards viewport */}
+        <div className="relative flex-1">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              service={service}
+              index={index}
+              totalServices={services.length}
+              containerProgress={scrollYProgress}
+            />
+          ))}
+        </div>
+
+
+      </div>
+    </section>
   );
 }

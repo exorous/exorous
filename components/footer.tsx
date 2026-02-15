@@ -6,7 +6,7 @@ import { Sparkles, ExternalLink, Twitter, Linkedin, Mail, Phone, MapPin } from '
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
-import { config } from '@/lib/config';
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,20 +15,22 @@ export default function Footer() {
     {
       title: "Site Map",
       links: [
-        { label: "Home", href: "#hero" },
-        { label: "Services", href: "#services" },
-        { label: "Projects", href: "#projects" },
-        { label: "About", href: "#about" },
-        { label: "Contact", href: "#contact" },
+        { label: "The Problem", href: "#bottleneck" },
+        { label: "The Solution", href: "#services" },
+        { label: "Process", href: "#process" },
+        { label: "Guarantee", href: "#guarantee" },
+        { label: "Audit", href: "#contact" },
       ],
     },
     {
-      title: "Services",
+      title: "Our Solution",
       links: [
-        { label: "Web Development", href: "#" },
-        { label: "UI/UX Design", href: "#" },
-        { label: "Mobile Apps", href: "#" },
-        { label: "AI Agent Development", href: "#" },
+        { label: "Lead Gen", href: "#services" },
+        { label: "Follow Up", href: "#services" },
+        { label: "CRM Sync", href: "#services" },
+        { label: "Client Onboarding", href: "#services" },
+        { label: "Reporting", href: "#services" },
+        { label: "Admin Ops", href: "#services" },
       ],
     },
     {
@@ -66,8 +68,8 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 max-w-md">
-              Crafting digital experiences that flow. We specialize in creating websites and applications
-              that engage users and drive business growth.
+              Done-for-you AI automation for marketing agencies. We build custom systems that eliminate
+              repetitive workflows so you can scale without hiring.
             </p>
 
             {/* Contact Information */}
@@ -75,26 +77,11 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
-                  href={`mailto:${config.app.email}`}
+                  href="mailto:contact@exorous.com"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {config.app.email}
+                  contact@exorous.com
                 </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <a
-                  href={`tel:${config.app.phone}`}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {config.app.phone}
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-sm text-muted-foreground">
-                  {config.app.address}
-                </span>
               </div>
             </div>
 
