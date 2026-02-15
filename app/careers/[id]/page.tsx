@@ -172,13 +172,14 @@ const jobPositions: JobPosition[] = [
 ];
 
 interface JobPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function JobPage({ params }: JobPageProps) {
-  const job = jobPositions.find(job => job.id === params.id);
+export default async function JobPage({ params }: JobPageProps) {
+  const { id } = await params;
+  const job = jobPositions.find(job => job.id === id);
 
   if (!job) {
     notFound();

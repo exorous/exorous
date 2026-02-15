@@ -3,9 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
         const { status, category } = await req.json();
 
         // Validate input (basic validation)
@@ -14,7 +15,7 @@ export async function PATCH(
         }
 
         const updatedLead = await prisma.lead.update({
-            where: { id: params.id },
+            where: { id },
             data: {
                 ...(status && { status }),
                 ...(category && { category }),
