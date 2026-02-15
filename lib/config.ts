@@ -5,6 +5,7 @@ export const meetingTypes = [
         id: 'discovery',
         name: 'Discovery Call',
         duration: '30 min',
+        price: 'Free',
         calendlyUrl: calendlyUrl, // Use the main URL directly
         description: 'Perfect for initial project scoping and feasibility assessment.',
         icon: 'Sparkles',
@@ -13,6 +14,7 @@ export const meetingTypes = [
         id: 'technical',
         name: 'Technical Deep Dive',
         duration: '60 min',
+        price: 'Free',
         calendlyUrl: calendlyUrl,
         description: 'Detailed architecture review for complex system integrations.',
         icon: 'Code',
