@@ -122,12 +122,12 @@ export function LeadTable({ leads }: LeadTableProps) {
             <Table>
                 <TableHeader className="bg-zinc-900/20">
                     <TableRow className="border-white/5 hover:bg-transparent">
-                        <TableHead className="text-xs uppercase tracking-widest text-zinc-500 py-6">Timestamp</TableHead>
-                        <TableHead className="text-xs uppercase tracking-widest text-zinc-500 py-6">Lead Details</TableHead>
-                        <TableHead className="text-xs uppercase tracking-widest text-zinc-500 py-6">AI Intelligence</TableHead>
-                        <TableHead className="text-xs uppercase tracking-widest text-zinc-500 py-6">Follow-Ups</TableHead>
-                        <TableHead className="text-xs uppercase tracking-widest text-zinc-500 py-6">Status</TableHead>
-                        <TableHead className="text-right text-xs uppercase tracking-widest text-zinc-500 py-6 pr-8">Actions</TableHead>
+                        <TableHead className="text-xs text-zinc-500 py-6">Timestamp</TableHead>
+                        <TableHead className="text-xs text-zinc-500 py-6">Lead Details</TableHead>
+                        <TableHead className="text-xs text-zinc-500 py-6">AI Intelligence</TableHead>
+                        <TableHead className="text-xs text-zinc-500 py-6">Follow-Ups</TableHead>
+                        <TableHead className="text-xs text-zinc-500 py-6">Status</TableHead>
+                        <TableHead className="text-right text-xs text-zinc-500 py-6 pr-8">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -137,7 +137,7 @@ export function LeadTable({ leads }: LeadTableProps) {
                                 <TableCell className="py-6">
                                     <div className="flex flex-col gap-1">
                                         <span className="text-white font-medium text-sm">{format(new Date(lead.createdAt), 'MMM d, h:mm a')}</span>
-                                        <span className="text-[10px] text-muted-foreground uppercase tracking-tighter">ID: {lead.id.slice(-8)}</span>
+                                        <span className="text-[10px] text-muted-foreground">ID: {lead.id.slice(-8)}</span>
                                     </div>
                                 </TableCell>
                                 <TableCell className="py-6">

@@ -129,7 +129,7 @@ export default function ContactSection() {
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{item.label}</p>
+                  <p className="text-[10px] text-muted-foreground">{item.label}</p>
                   <p className="text-sm font-medium text-white">{item.value}</p>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function ContactSection() {
           </div>
 
           <div className="space-y-4">
-            <h5 className="font-bold text-sm text-white uppercase tracking-widest">The Transformation:</h5>
+            <h5 className="font-bold text-sm text-white">The Transformation:</h5>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 "Identify Manual Leakage",
@@ -185,7 +185,7 @@ export default function ContactSection() {
                 >
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-xs text-zinc-500 uppercase tracking-widest ml-1">Full Name</Label>
+                      <Label className="text-xs text-zinc-500 ml-1">Full Name</Label>
                       <Input
                         required
                         placeholder="John Doe"
@@ -195,7 +195,7 @@ export default function ContactSection() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-xs text-zinc-500 uppercase tracking-widest ml-1">Email</Label>
+                      <Label className="text-xs text-zinc-500 ml-1">Email</Label>
                       <Input
                         required
                         type="email"
@@ -208,7 +208,7 @@ export default function ContactSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-xs text-zinc-500 uppercase tracking-widest ml-1">Budget Range (Optional)</Label>
+                    <Label className="text-xs text-zinc-500 ml-1">Budget Range (Optional)</Label>
                     <Select onValueChange={(value) => setFormData({ ...formData, budget: value })}>
                       <SelectTrigger className="bg-white/5 border-white/10 text-white rounded-xl py-6 focus:ring-primary/20">
                         <SelectValue placeholder="Select your budget" />
@@ -223,7 +223,7 @@ export default function ContactSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-xs text-zinc-500 uppercase tracking-widest ml-1">What is your biggest manual bottleneck?</Label>
+                    <Label className="text-xs text-zinc-500 ml-1">What is your biggest manual bottleneck?</Label>
                     <Textarea
                       required
                       placeholder="e.g., We spend 10 hours a week manually entering lead data..."
@@ -250,7 +250,7 @@ export default function ContactSection() {
                     )}
                   </Button>
 
-                  <p className="text-[10px] text-zinc-500 text-center uppercase tracking-widest">
+                  <p className="text-[10px] text-zinc-500 text-center">
                     🔒 Data secured and analyzed by Exorous Core
                   </p>
                 </motion.form>
@@ -284,7 +284,7 @@ export default function ContactSection() {
                   ) : (
                     <div className="p-6 border border-white/5 bg-white/5 rounded-2xl flex flex-col items-center gap-3">
                       <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                      <p className="text-xs text-white font-medium uppercase tracking-widest">Checking Inbox...</p>
+                      <p className="text-xs text-white font-medium">Checking Inbox...</p>
                       <p className="text-[10px] text-zinc-500">A personalized email is being generated for {formData.email}</p>
                     </div>
                   )}

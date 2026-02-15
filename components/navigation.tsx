@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import ThemeToggle from '@/components/theme-toggle';
 import Image from 'next/image';
 import { trackButtonClick } from '@/lib/gtag';
 import { config } from '@/lib/config';
@@ -64,67 +63,73 @@ export default function Navigation() {
   ];
 
   return (
-    <header className={cn(
-      "fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md",
-      isScrolled ? "bg-background/80 py-3 shadow-md" : "bg-transparent py-5"
-    )}>
-      <nav className="container mx-auto flex justify-between items-center px-4">
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      <nav className={cn(
+        "pointer-events-auto rounded-full border border-white/10 bg-black/40 backdrop-blur-md shadow-lg transition-all duration-300",
+        "flex items-center justify-between px-6 py-3 w-full max-w-5xl"
+      )}>
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-bold"
+          className="flex items-center gap-2 text-xl font-bold mr-8"
           onClick={closeMenu}
         >
-          <Image src={"/logo.png"} height={30} width={30} alt='Exorous' />
-          <span className="gradient-text mt-3">Exorous</span>
+          <Image src={"/logo.png"} height={28} width={28} alt='Exorous' />
+          <span className="gradient-text text-lg mt-1">Exorous</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-4 lg:gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <ul className="flex gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-sm lg:text-base transition-colors relative group",
-                    activeSection === link.id ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"
+                    "text-xs lg:text-sm font-medium transition-colors relative group py-1",
+                    activeSection === link.id ? "text-primary" : "text-zinc-400 hover:text-white"
                   )}
                   onClick={closeMenu}
                 >
                   {link.name}
-                  <span className={cn(
-                    "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
-                    activeSection === link.id ? "w-full" : "w-0 group-hover:w-full"
-                  )} />
+                  {activeSection === link.id && (
+                    <motion.div
+                      layoutId="activeSection"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </Link>
               </li>
             ))}
           </ul>
-          <ThemeToggle />
-          <Link
-            href={config.calendly.mainBooking}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              size="sm"
-              className="rounded-full text-sm"
-              onClick={() => trackButtonClick('Book a Meeting', 'desktop-nav')}
+
+          <div className="h-6 w-px bg-white/10" />
+
+          <div className="flex items-center gap-3">
+            <Link
+              href={config.calendly.mainBooking}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Book a Meeting
-            </Button>
-          </Link>
+              <Button
+                size="sm"
+                className="rounded-full text-xs font-bold px-4 h-9 bg-primary text-black hover:bg-primary/90"
+                onClick={() => trackButtonClick('Book a Meeting', 'desktop-nav')}
+              >
+                Book a Meeting
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+        <div className="flex items-center gap-3 md:hidden">
           <button
             onClick={toggleMenu}
-            className="text-foreground p-1 focus:outline-none"
+            className="text-white p-1 focus:outline-none bg-white/5 rounded-full border border-white/10 h-9 w-9 flex items-center justify-center"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </nav>
@@ -133,20 +138,22 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
+            className="pointer-events-auto absolute top-full left-4 right-4 mt-2 bg-zinc-950/90 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-4 md:hidden flex flex-col gap-2"
           >
-            <ul className="flex flex-col py-4 px-4 space-y-3">
+            <ul className="flex flex-col space-y-1">
               {navLinks.map((link) => (
-                <li key={link.name} className="w-full">
+                <li key={link.name}>
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-base block py-2 transition-colors",
-                      activeSection === link.id ? "text-primary font-medium" : "hover:text-primary"
+                      "block px-4 py-3 rounded-xl transition-colors text-sm font-medium",
+                      activeSection === link.id
+                        ? "bg-primary/10 text-primary"
+                        : "text-zinc-400 hover:text-white hover:bg-white/5"
                     )}
                     onClick={closeMenu}
                   >
@@ -154,21 +161,23 @@ export default function Navigation() {
                   </Link>
                 </li>
               ))}
-              <li className="pt-2">
-                <Link
-                  href={config.calendly.mainBooking}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    className="w-full rounded-full"
-                    onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
-                  >
-                    Book a Meeting
-                  </Button>
-                </Link>
-              </li>
             </ul>
+
+            <div className="h-px bg-white/5 my-2" />
+
+            <Link
+              href={config.calendly.mainBooking}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2"
+            >
+              <Button
+                className="w-full rounded-xl bg-primary text-black hover:bg-primary/90 font-bold"
+                onClick={() => trackButtonClick('Book a Meeting', 'mobile-nav')}
+              >
+                Book a Meeting
+              </Button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

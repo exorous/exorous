@@ -110,7 +110,7 @@ export default function AboutSection() {
           {/* Right Column: Scrollable Content */}
           <div className="w-full lg:w-1/2 flex flex-col pt-48 pb-32">
             <MotionSection className="mb-48 lg:mb-72">
-              <h2 className="text-primary font-medium mb-6 tracking-widest uppercase text-sm flex items-center gap-3">
+              <h2 className="text-primary font-medium mb-6 text-sm flex items-center gap-3">
                 <span className="w-8 h-px bg-primary" />
                 Our Philosophy
               </h2>

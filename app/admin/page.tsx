@@ -34,7 +34,7 @@ export default async function AdminDashboard() {
                     </div>
                     <div className="flex items-center gap-6">
                         <div className="flex flex-col items-end">
-                            <span className="text-[10px] text-muted-foreground uppercase tracking-widest">System Status</span>
+                            <span className="text-[10px] text-muted-foreground">System Status</span>
                             <span className="flex items-center gap-2 text-primary font-bold text-sm">
                                 <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
                                 Gemini Engine Active

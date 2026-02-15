@@ -190,7 +190,7 @@ export default function RootLayout({
             <SmoothScroll>
               <Navigation />
               <BehavioralTriggers>
-                <main className="relative pt-20 md:pt-24">
+                <main className="relative">
                   {children}
                 </main>
               </BehavioralTriggers>

@@ -49,7 +49,7 @@ export default function ProcessSection() {
       <div className="absolute inset-0 z-0 bg-black" />
       <div className="container mx-auto px-4 relative z-10">
         <MotionSection className="mb-24 text-center px-4">
-          <h2 className="text-primary font-medium mb-3 tracking-wide uppercase text-sm">Our Process</h2>
+          <h2 className="text-primary font-medium mb-3 text-sm">Our Process</h2>
           <h3 className="text-4xl md:text-5xl font-bold mb-6">How We Work</h3>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             From chaos to clarity in four steps.

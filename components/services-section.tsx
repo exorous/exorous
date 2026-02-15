@@ -68,7 +68,7 @@ export default function ServicesSection() {
 
             <div className="relative z-10 mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
               <span className="text-[10px] font-mono text-zinc-500 tracking-wider">RES-ID: {String(index + 1).padStart(2, '0')}</span>
-              <span className="text-[10px] font-bold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20 uppercase tracking-tight">
+              <span className="text-[10px] font-bold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                 {service.stats}
               </span>
             </div>

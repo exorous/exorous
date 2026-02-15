@@ -35,7 +35,7 @@ export function AdminStats({ leads }: AdminStatsProps) {
             {statItems.map((stat, i) => (
                 <div key={i} className="bg-zinc-900/40 border border-white/5 rounded-2xl p-6 flex flex-col gap-2">
                     <div className="flex items-center justify-between text-muted-foreground">
-                        <span className="text-xs uppercase tracking-widest font-bold">{stat.label}</span>
+                        <span className="text-xs font-bold">{stat.label}</span>
                         {stat.icon}
                     </div>
                     <span className={`text-2xl font-black ${stat.color}`}>{stat.value}</span>

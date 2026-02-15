@@ -93,7 +93,7 @@ export default function PricingSection() {
                             }`}
                     >
                         {pkg.popular && (
-                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-black text-[9px] font-black tracking-widest uppercase px-3 py-0.5 rounded-full shadow-[0_0_15px_rgba(23,194,227,0.5)]">
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-black text-[9px] font-black px-3 py-0.5 rounded-full shadow-[0_0_15px_rgba(23,194,227,0.5)]">
                                 Recommended
                             </div>
                         )}
@@ -104,7 +104,7 @@ export default function PricingSection() {
                             </div>
                             <div className="text-right">
                                 <h3 className="text-xl font-black text-white tracking-tight leading-none mb-1">{pkg.name}</h3>
-                                <p className="text-[9px] text-primary font-bold tracking-widest uppercase leading-none">{pkg.tagline}</p>
+                                <p className="text-[9px] text-primary font-bold leading-none">{pkg.tagline}</p>
                             </div>
                         </div>
 
@@ -112,7 +112,7 @@ export default function PricingSection() {
                             <div className="flex items-baseline gap-1">
                                 <span className="text-3xl font-black text-white tracking-tighter">{pkg.price}</span>
                             </div>
-                            <p className="text-[9px] text-muted-foreground mt-1 font-mono uppercase tracking-widest opacity-60">
+                            <p className="text-[9px] text-muted-foreground mt-1 font-mono opacity-60">
                                 {pkg.type}
                             </p>
                         </div>

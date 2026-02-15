@@ -1,272 +1,115 @@
-🧠 EXOROUS — FULL BUSINESS OVERVIEW
-1️⃣ Company Identity
-Company Name
+🧠 EXOROUS AGENCY — BUSINESS CONTEXT
 
-Exorous
+We run an agency called Exorous that provides AI automation services.
 
-Business Type
+🎯 Core Service
 
-AI Automation Agency
+We build done-for-you AI automation systems for clients, not SaaS tools.
 
-Core Mission
+Our service focuses on designing and implementing custom automation workflows that eliminate repetitive business tasks.
 
-Exorous helps businesses eliminate repetitive manual work by building intelligent AI automation systems that capture leads, qualify customers, automate communication, and streamline operations.
+🎯 Target Customers (ICP)
 
-Vision (Long-Term)
+Our primary target market is:
 
-To become a leading AI automation partner for small and mid-sized businesses worldwide by transforming traditional workflows into fully autonomous AI-driven systems.
+Small to medium digital marketing agencies
 
-Tagline
+Team size: 3–20 people
 
-“Turn Your Business Into an AI-Powered Machine.”
+Already handling client work
 
-2️⃣ What We Actually Do (Core Services)
+Struggling with manual processes
 
-Exorous does NOT build websites or generic AI chatbots.
+Want to scale without hiring more staff
 
-We specialize in AI Business Automation Systems.
+We DO NOT target:
 
-PRIMARY SERVICE CATEGORY
-AI Workflow Automation
+Freelancers
 
-We design and deploy AI systems that:
+Early startups
 
-Capture leads automatically
+General businesses without existing workflows
 
-Qualify customers instantly
+🎯 Core Problems We Solve
 
-Respond to inquiries in real-time
+Marketing agencies often struggle with:
 
-Automate follow-ups
+Manual lead qualification
 
-Generate proposals automatically
+Manual follow-ups
 
-Integrate with CRM and tools
+CRM updates
 
-SECONDARY SERVICE CATEGORY
-AI Sales Automation
+Client onboarding tasks
 
-Systems that:
+Reporting workflows
 
-Score incoming leads
+Campaign monitoring
 
-Personalize outreach
+Repetitive internal operations
 
-Generate responses automatically
+These tasks consume 20–40+ hours per month.
 
-Book meetings without manual input
+🎯 Our Value Proposition
 
-THIRD SERVICE CATEGORY
-AI Operations Automation
+We help agencies:
 
-Automations for:
+Save operational time
 
-Internal workflows
+Reduce manual workload
 
-Task management
+Handle more clients without hiring
 
-Data processing
+Improve lead conversion processes
 
-Customer support handling
+Increase operational efficiency
 
-3️⃣ Who We Serve (Target Customers)
-Primary Target Market
-Small to Mid-Sized Businesses
+We sell time savings and scalability, not technology.
 
-Industries:
+🎯 Our Services Include
 
-Marketing agencies
+Lead automation workflows
 
-Consulting firms
+AI follow-up systems
 
-SaaS startups
+CRM automation
 
-Coaches & service providers
+Client onboarding automation
 
-Lead generation companies
+Reporting automation
 
-Ideal Customer Profile
+Internal operations workflows
 
-Businesses that:
+We build custom systems using tools like:
 
-Receive leads regularly
+Make.com / n8n
 
-Waste time on manual follow-ups
+AI APIs (LLMs)
 
-Have repetitive processes
+CRM integrations
 
-Want to scale without hiring staff
+Automation platforms
 
-Customer Pain Points
+🎯 Pricing Model
 
-Our clients struggle with:
+Our pricing structure includes:
 
-Slow lead response
+One-time setup fee
 
-Manual repetitive tasks
+Monthly support/maintenance fee
 
-Disorganized workflows
+We position ourselves as a done-for-you premium service, not a cheap freelancer offering.
 
-Lost sales opportunities
+🎯 Positioning Statement
 
-High operational costs
+Exorous helps marketing agencies scale by implementing custom AI automation systems that eliminate repetitive work and improve operational efficiency.
 
-4️⃣ Our Unique Value Proposition
-What Makes Exorous Different
+🎯 Goal of the Agency
 
-Unlike traditional agencies:
+Our short-term goal:
 
-Exorous does not provide one-time services.
+Acquire our first few clients through cold outreach.
 
-We build intelligent AI systems that continue working automatically after deployment.
+Our long-term goal:
 
-Key Differentiators
-1. Automation-First Approach
-
-We focus on replacing manual work, not just improving it.
-
-2. AI-Powered Decision Making
-
-Our systems can analyze, qualify, and respond autonomously.
-
-3. End-to-End Implementation
-
-We handle strategy, design, development, and deployment.
-
-4. Real ROI Focus
-
-Our goal is measurable business impact:
-
-Faster lead conversion
-
-Reduced workload
-
-Increased revenue efficiency
-
-5️⃣ Our Service Delivery Process
-Step 1 — Business Analysis
-
-We analyze the client’s current workflow and identify automation opportunities.
-
-Step 2 — Automation Strategy Design
-
-We design a customized AI automation architecture tailored to the client’s needs.
-
-Step 3 — System Development
-
-We build and integrate AI agents, automation workflows, and necessary tools.
-
-Step 4 — Deployment & Optimization
-
-We deploy the system, monitor performance, and optimize continuously.
-
-6️⃣ Business Model
-Revenue Streams
-1. Setup Fee (Primary Revenue)
-
-One-time payment for automation implementation.
-
-Typical Range:
-$500 – $3000 depending on complexity.
-
-2. Monthly Maintenance (Recurring Revenue)
-
-Ongoing monitoring, improvements, and support.
-
-Typical Range:
-$100 – $500/month.
-
-3. Custom Enterprise Solutions
-
-High-value automation projects for larger businesses.
-
-7️⃣ Brand Personality & Tone
-Brand Voice
-
-Professional
-
-Confident
-
-Results-driven
-
-Innovation-focused
-
-Simple and clear communication
-
-Communication Style
-
-Exorous speaks in a way that emphasizes:
-
-Efficiency
-
-Automation benefits
-
-Business growth impact
-
-8️⃣ Website Purpose
-
-The Exorous website is not just informational.
-
-It serves as:
-
-A lead generation engine
-
-A live demonstration platform
-
-A conversion funnel
-
-A proof of expertise
-
-Main Website Goals
-
-Clearly explain AI automation value
-
-Demonstrate real working systems
-
-Capture qualified leads
-
-Convert visitors into booked consultations
-
-9️⃣ Core Website Features Required
-
-The website should include:
-
-High-conversion landing page
-
-AI automation demo section
-
-Lead capture system
-
-AI-powered lead qualification
-
-Automated response system
-
-Consultation booking integration
-
-🔟 Long-Term Business Direction
-
-Exorous aims to evolve into:
-
-A productized AI automation platform
-
-A SaaS provider for business automation
-
-A global AI operations partner
-
-🔥 Why This Overview Is Powerful
-
-This tells Antigravity:
-
-Exactly what you are
-
-Exactly what you sell
-
-Exactly who you serve
-
-Exactly how your business works
-
-It prevents the AI from building a generic “digital agency website”.
-
-Instead, it will build:
-
-👉 A high-authority AI automation brand site
+Build a specialized AI automation agency focused on marketing agency operations.

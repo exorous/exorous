@@ -23,7 +23,7 @@ export function CampaignInsights({ leads }: CampaignInsightsProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Traffic Sources */}
             <div className="bg-zinc-900/40 border border-white/5 rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
                     <Users className="h-4 w-4 text-primary" /> Traffic Sources
                 </h3>
                 <div className="space-y-3">
@@ -46,7 +46,7 @@ export function CampaignInsights({ leads }: CampaignInsightsProps) {
 
             {/* Pipeline Health */}
             <div className="bg-zinc-900/40 border border-white/5 rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
                     <Zap className="h-4 w-4 text-red-500" /> Pipeline Health
                 </h3>
                 <div className="space-y-4">

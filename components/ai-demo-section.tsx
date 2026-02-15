@@ -80,7 +80,7 @@ export default function AiDemoSection() {
                             <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                             <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                         </div>
-                        <div className="flex-1 text-center font-mono text-[10px] text-primary/70 uppercase tracking-widest">
+                        <div className="flex-1 text-center font-mono text-[10px] text-primary/70">
                             agent-core-v2.1.0 -- executing
                         </div>
                     </div>

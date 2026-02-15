@@ -139,7 +139,7 @@ function ProblemItem({ problem, progress, range }: { problem: any, progress: any
                 >
                     {problem.title}
                 </motion.h4>
-                <span className="text-sm font-mono text-zinc-600 uppercase tracking-widest">/{problem.category}</span>
+                <span className="text-sm font-mono text-zinc-600">/{problem.category}</span>
             </div>
 
             <p className="text-zinc-400 text-lg max-w-lg leading-relaxed">
