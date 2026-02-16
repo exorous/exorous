@@ -3,11 +3,11 @@ import { Metadata } from "next";
 import BookPageClient from "./book-client";
 
 export const metadata: Metadata = {
-    title: "Book Your Agency Audit | Exorous",
-    description: "Schedule a free 15-minute consultation to see how we can automate your agency fulfillment.",
+    title: "Book Your 30-Minute Strategy Session | Exorous",
+    description: "Schedule a high-level partner interview to discuss automating your agency's fulfillment. This is a strategy call, not a sales pitch.",
     openGraph: {
-        title: "Book Your Agency Audit | Exorous",
-        description: "Schedule a free 15-minute consultation to see how we can automate your agency fulfillment.",
+        title: "Book Your 30-Minute Strategy Session | Exorous",
+        description: "Schedule a high-level partner interview to discuss automating your agency's fulfillment. This is a strategy call, not a sales pitch.",
         images: [
             {
                 url: "/linkedin-banner-high-res.png",
