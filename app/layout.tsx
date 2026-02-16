@@ -3,11 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
-import Navigation from '@/components/navigation';
-import Footer from '@/components/footer';
 import SmoothScroll from '@/components/smooth-scroll';
 import Analytics from '@/components/Analytics';
-import BehavioralTriggers from '@/components/behavioral-triggers';
 import CookieConsentBanner from '@/components/cookie-consent-banner';
 import { Toaster } from '@/components/ui/sonner';
 import Script from 'next/script';
@@ -92,7 +89,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={`${inter.variable} font-sans antialiased`}>
-          {/* ... existing scripts ... */}
+          {/* Google structured data */}
           <Script
             id="structured-data"
             type="application/ld+json"
@@ -189,13 +186,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <SmoothScroll>
-              <Navigation />
-              <BehavioralTriggers>
-                <main className="relative">
-                  {children}
-                </main>
-              </BehavioralTriggers>
-              <Footer />
+              {children}
               <CookieConsentBanner />
               <Toaster />
             </SmoothScroll>
