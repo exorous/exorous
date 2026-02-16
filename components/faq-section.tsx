@@ -25,7 +25,7 @@ const faqs = [
     },
     {
         question: "Do you offer ongoing support?",
-        answer: "Yes. All plans include a post-launch optimization period. Our Growth and Pro plans include 24/7 technical support and monthly system health audits."
+        answer: "Yes. All plans include a 30-day post-launch warranty. For continuous optimization, system updates, and priority support, we offer a dedicated Monthly Support add-on."
     }
 ];
 
@@ -54,8 +54,8 @@ export default function FAQSection() {
                         <button
                             onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                             className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-4 ${openIndex === idx
-                                    ? "bg-zinc-900/60 border-primary/40 shadow-[0_0_20px_rgba(23,194,227,0.1)]"
-                                    : "bg-zinc-900/20 border-white/5 hover:border-white/10"
+                                ? "bg-zinc-900/60 border-primary/40 shadow-[0_0_20px_rgba(23,194,227,0.1)]"
+                                : "bg-zinc-900/20 border-white/5 hover:border-white/10"
                                 }`}
                         >
                             <span className="text-sm md:text-base font-bold text-white tracking-tight">
