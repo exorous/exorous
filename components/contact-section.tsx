@@ -90,7 +90,7 @@ export default function ContactSection() {
           </Button>
 
           <p className="mt-6 text-xs text-zinc-500 max-w-md">
-            No pressure sales. just a strategy session to see where you're losing money and how we can fix it.
+            No pressure sales. just a workflow audit to see where you're losing money and how we can fix it.
           </p>
 
         </motion.div>
