@@ -1,4 +1,4 @@
-export const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/strategy-session';
+export const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/workflow-audit';
 
 export const meetingTypes = [
     {

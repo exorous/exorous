@@ -71,7 +71,7 @@ export default function IdleDetection({
 
   const openCalendly = () => {
     if (typeof window !== 'undefined') {
-      const url = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation';
+      const url = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/workflow-audit';
       window.open(url, '_blank', 'noopener,noreferrer');
       trackButtonClick('Idle Detection Book Click', 'idle-notification');
       setShowNotification(false);

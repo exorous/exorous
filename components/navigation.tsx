@@ -104,7 +104,7 @@ export default function Navigation() {
 
           <div className="flex items-center gap-3">
             <Link
-              href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation'}
+              href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/workflow-audit'}
               target="_blank"
             >
               <Button
@@ -162,7 +162,7 @@ export default function Navigation() {
             <div className="h-px bg-white/5 my-2" />
 
             <Link
-              href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation'}
+              href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/workflow-audit'}
               target="_blank"
               className="px-2"
               onClick={() => closeMenu()}

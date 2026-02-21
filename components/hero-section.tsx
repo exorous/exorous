@@ -44,7 +44,7 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-              <Link href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/free-consultation'} target="_blank">
+              <Link href={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/riaz37-ipe/workflow-audit'} target="_blank">
                 <Button size="lg" className="gap-2 rounded-full text-base font-bold px-8 h-12 w-full shadow-[0_0_20px_rgba(23,194,227,0.3)] hover:shadow-[0_0_30px_rgba(23,194,227,0.5)] transition-shadow bg-primary text-black hover:bg-primary/90">
                   Book a Call <ArrowRight size={18} />
                 </Button>
