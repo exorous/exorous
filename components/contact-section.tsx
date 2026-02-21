@@ -25,12 +25,12 @@ export default function ContactSection() {
     {
       icon: <Calendar className="h-4 w-4" />,
       label: "Schedule",
-      value: "Free consultation",
+      value: "Free Workflow Audit",
     },
     {
       icon: <Clock className="h-4 w-4" />,
       label: "Duration",
-      value: "30-60 minutes",
+      value: "30 minutes",
     },
     {
       icon: <Users className="h-4 w-4" />,

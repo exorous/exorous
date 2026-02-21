@@ -9,7 +9,7 @@ import SectionWrapper from "./section-wrapper";
 const faqs = [
     {
         question: "How long does it take to deploy an AI system?",
-        answer: "Our Starter systems go live in just 7 days. Growth and Pro systems typically take 2-4 weeks depending on the complexity of your CRM integrations and custom workflows."
+        answer: "Most systems go live within 1–2 weeks. Complex multi-tool integrations may take 3–4 weeks depending on scope."
     },
     {
         question: "Do I need to replace my existing CRM?",
@@ -25,7 +25,7 @@ const faqs = [
     },
     {
         question: "Do you offer ongoing support?",
-        answer: "Yes. All plans include a 30-day post-launch warranty. For continuous optimization, system updates, and priority support, we offer a dedicated Monthly Support add-on."
+        answer: "Yes. Every project includes a 30-day post-launch warranty. We also offer ongoing monthly optimization and priority support to keep your systems running at peak performance."
     }
 ];
 

@@ -10,9 +10,9 @@ export const metadata: Metadata = {
         description: "Schedule a high-level partner interview to discuss automating your agency's fulfillment. This is a strategy call, not a sales pitch.",
         images: [
             {
-                url: "/linkedin-banner-high-res.png",
-                width: 1584,
-                height: 396,
+                url: "/banner.png",
+                width: 1536,
+                height: 1024,
                 alt: "Exorous Agency Automation",
             },
         ],

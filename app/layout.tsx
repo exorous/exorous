@@ -24,18 +24,18 @@ export const metadata: Metadata = {
     default: 'Exorous',
     template: '%s | Exorous',
   },
-  description: 'Exorous - Advanced AI Automation Agency. We build intelligent systems that capture leads, qualify customers, and automate operations 24/7. Turn your business into an AI-powered machine.',
+  description: 'Exorous helps marketing agencies eliminate repetitive operations with done-for-you AI automation. Scale your agency without hiring.',
   keywords: [
     'AI Automation',
     'AI Agency',
+    'Marketing Agency Automation',
+    'Agency Operations',
+    'Lead Qualification Automation',
+    'Client Onboarding Automation',
     'Lead Automation',
     'Intelligent Workflows',
     'AI Agents',
     'Business Process Automation',
-    'Next.js',
-    'TypeScript',
-    'Web Development',
-    'Digital Transformation',
     'Exorous',
   ],
   authors: [{ name: 'Exorous' }],
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     title: 'Exorous | AI Automation Agency',
-    description: 'Eliminate repetitive manual work. We build intelligent AI systems that capture leads, qualify customers, and automate operations 24/7.',
+    description: 'Done-for-you AI automation for marketing agencies. We build custom systems that eliminate repetitive workflows so you can scale without hiring.',
     siteName: 'Exorous',
     images: [
       {
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Exorous | AI Automation Agency',
-    description: 'Turn your business into an AI-powered machine with custom automation ecosystems.',
+    description: 'Done-for-you AI automation for marketing agencies. Scale your operations without increasing headcount.',
     images: [`${siteUrl}/og-image.png`],
   },
   robots: {

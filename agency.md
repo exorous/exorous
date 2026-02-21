@@ -1,115 +1,111 @@
-🧠 EXOROUS AGENCY — BUSINESS CONTEXT
+# 🧠 EXOROUS — SOURCE OF TRUTH
 
-We run an agency called Exorous that provides AI automation services.
+## 1) What Exorous Is
 
-🎯 Core Service
+Exorous is a done-for-you AI automation agency for small-to-medium digital marketing agencies (3–20 people).
+We build custom workflow systems that remove repetitive operational work so agencies can scale without hiring.
 
-We build done-for-you AI automation systems for clients, not SaaS tools.
+- We are **NOT SaaS**.
+- We are **NOT selling tools**.
+- We are a **partner** that designs, builds, and maintains systems that deliver measurable time savings and operational clarity.
 
-Our service focuses on designing and implementing custom automation workflows that eliminate repetitive business tasks.
+## 2) Who We Serve (Strict ICP)
 
-🎯 Target Customers (ICP)
+**Only:** Small-to-medium digital marketing agencies
+- **Team size:** 3–20
+- Already have clients
+- Overwhelmed by manual operations
+- Want to scale capacity without adding headcount
 
-Our primary target market is:
+**We do NOT serve:**
+- Freelancers
+- Early-stage startups
+- Random local businesses
+- Enterprises
 
-Small to medium digital marketing agencies
+## 3) The Core Problem We Solve
 
-Team size: 3–20 people
+Marketing agencies waste 20–40+ hours per month on repetitive operations like:
+- Manual lead qualification & routing
+- Manual follow-ups and reminders
+- CRM updates / pipeline admin
+- Client onboarding tasks
+- Reporting and performance updates
+- Campaign monitoring alerts
+- Internal admin coordination
 
-Already handling client work
+**This creates:**
+- Leads falling through cracks
+- Slow response times
+- Team burnout
+- Inconsistent client experience
+- Bottlenecks that block growth
 
-Struggling with manual processes
+## 4) What We Sell (Outcome, Not Tech)
 
-Want to scale without hiring more staff
+We sell:
+- Time savings
+- Operational efficiency
+- Scale without hiring
+- Reduced manual workload
+- Better client handling capacity
+- Fewer errors and missed follow-ups
 
-We DO NOT target:
+**Positioning statement:**
+> "Exorous helps marketing agencies eliminate repetitive operations so they can scale without hiring."
 
-Freelancers
+## 5) Primary Wedge Offer
 
-Early startups
+**"Lead Capture, Qualification & Follow-Up Automation System"**
 
-General businesses without existing workflows
+This is our entry offer because it's directly tied to revenue and urgent pain.
 
-🎯 Core Problems We Solve
+**Typical workflow:**
+1. Capture leads from forms, ads, website chat, email, or DMs
+2. AI qualifies and tags leads (budget, fit, intent)
+3. Auto-routes into CRM with correct pipeline stage
+4. Instant personalized follow-up is triggered (email/SMS)
+5. Team gets notified (Slack/Email) for high-intent leads
+6. Follow-up sequences run automatically until lead responds
 
-Marketing agencies often struggle with:
+**Result:**
+- No leads lost
+- Faster response time
+- More booked calls
+- Less manual chasing
 
-Manual lead qualification
+## 6) Secondary Solutions (Upsells After Entry)
 
-Manual follow-ups
+### A) Client Onboarding Automation
+- New client intake + form collection
+- Auto-create tasks, folders, Slack channels
+- Auto-send onboarding emails and questionnaires
+- Update CRM and project management
 
-CRM updates
+### B) Reporting Automation
+- Pull data from ads/analytics/tools
+- Generate client-ready summaries
+- Auto-send scheduled reports
+- Flag anomalies automatically
 
-Client onboarding tasks
+### C) Internal Operations Automation
+- Task routing
+- SOP checklists
+- Handoffs between team members
+- Approvals, reminders, and admin automation
 
-Reporting workflows
+## 7) How We Deliver (Process)
 
-Campaign monitoring
+We position as a structured partner.
 
-Repetitive internal operations
+**Step 1 — Workflow Audit (30 minutes)**
+Goal: identify the one workflow leaking the most time and money.
 
-These tasks consume 20–40+ hours per month.
+**Step 2 — Automation Blueprint (1–2 days)**
+We map the exact workflow: triggers, actions, approvals, edge cases.
 
-🎯 Our Value Proposition
+**Step 3 — Build & Deploy (3–7 days depending on scope)**
+We implement the system and test it with the team.
 
-We help agencies:
-
-Save operational time
-
-Reduce manual workload
-
-Handle more clients without hiring
-
-Improve lead conversion processes
-
-Increase operational efficiency
-
-We sell time savings and scalability, not technology.
-
-🎯 Our Services Include
-
-Lead automation workflows
-
-AI follow-up systems
-
-CRM automation
-
-Client onboarding automation
-
-Reporting automation
-
-Internal operations workflows
-
-We build custom systems using tools like:
-
-Make.com / n8n
-
-AI APIs (LLMs)
-
-CRM integrations
-
-Automation platforms
-
-🎯 Pricing Model
-
-Our pricing structure includes:
-
-One-time setup fee
-
-Monthly support/maintenance fee
-
-We position ourselves as a done-for-you premium service, not a cheap freelancer offering.
-
-🎯 Positioning Statement
-
-Exorous helps marketing agencies scale by implementing custom AI automation systems that eliminate repetitive work and improve operational efficiency.
-
-🎯 Goal of the Agency
-
-Our short-term goal:
-
-Acquire our first few clients through cold outreach.
-
-Our long-term goal:
-
-Build a specialized AI automation agency focused on marketing agency operations.
+**Step 4 — Optimize + Maintain (monthly)**
+Ongoing support, fixes, improvements, monitoring.

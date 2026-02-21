@@ -1,0 +1,288 @@
+{
+    "name": "Exorous Ghost",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "cronExpression",
+                            "expression": "0 10 * * *"
+                        }
+                    ]
+                }
+            },
+            "id": "trigger-schedule",
+            "name": "Schedule (10 AM Daily)",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1,
+            "position": [
+                -200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "assignments": {
+                    "assignments": [
+                        {
+                            "id": "charter-text",
+                            "name": "charter",
+                            "value": "Exorous is a high-performance AI Automation Agency. We build Operating Leverage for digital marketing agencies (3-20 people). Pain: Manual CRM, qualification, lead-chasing. Solution: Instant qualification, automated nurturing, reporting automation. Goal: 30-50% operational cost reduction.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "agency-context",
+            "name": "Agency Charter",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3.2,
+            "position": [
+                0,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCoDPlzVb6hDbk5UsNhbCzMQcGKCJ2wIF8",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={{ JSON.stringify({ contents: [{ parts: [{ text: \"Based on the Exorous Charter: '\" + $json.charter + \"', generate 5 diverse, high-intent search queries to find marketing agencies that likely struggle with manual labor. Think creatively. Return ONLY a JSON array of strings: [ 'query1', 'query2', ... ]\" }] }] }) }}",
+                "options": {}
+            },
+            "id": "ai-strategist",
+            "name": "AI - Research Strategist",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "jsCode": "const response = $json;\nlet queries;\ntry {\n  const text = response.candidates[0].content.parts[0].text;\n  queries = JSON.parse(text.replace(/```json|```/g, ''));\n} catch (e) {\n  queries = [\"boutique SEO agencies USA\", \"marketing agencies manual lead intake\"];\n}\nreturn queries.map(q => ({ json: { query: q } }));"
+            },
+            "id": "split-queries",
+            "name": "Split Queries",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                400,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.tavily.com/search",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"{{ $json.query }}\",\n  \"search_depth\": \"advanced\",\n  \"include_raw_content\": true,\n  \"max_results\": 3\n}",
+                "options": {}
+            },
+            "id": "tavily-scout",
+            "name": "Tavily - Intel Scout",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                600,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "fieldToSplitOut": "results",
+                "options": {}
+            },
+            "id": "split-results",
+            "name": "Split Search Results",
+            "type": "n8n-nodes-base.itemLists",
+            "typeVersion": 3,
+            "position": [
+                800,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "removeDuplicates",
+                "compare": "selectedFields",
+                "fieldsToCompare": "url",
+                "options": {}
+            },
+            "id": "deduplicator",
+            "name": "Deduplicate Leads",
+            "type": "n8n-nodes-base.itemLists",
+            "typeVersion": 3,
+            "position": [
+                1000,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.tavily.com/search",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={\n  \"api_key\": \"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\",\n  \"query\": \"who are top 3 competitors for {{ $json.url }}\",\n  \"search_depth\": \"basic\",\n  \"max_results\": 3\n}",
+                "options": {}
+            },
+            "id": "competitor-scout",
+            "name": "Competitor Scout",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCoDPlzVb6hDbk5UsNhbCzMQcGKCJ2wIF8",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={{ JSON.stringify({ contents: [{ parts: [{ text: \"Analyze site: \" + $('Deduplicate Leads').item.json.raw_content.substring(0, 10000) + \"\\n\\nCompetitors: \" + JSON.stringify($json.results) + \"\\n\\nCharter: '\" + $('Agency Charter').first().json.charter + \"'\\n\\nTask: \\n1. Find Founder name. \\n2. Identify specific manual bottleneck. \\n3. Draft Sniper Email that mentions a competitor's leverage. \\n\\nReturn JSON: { 'founder': '...', 'bottleneck': '...', 'competitor_intel': '...', 'subject': '...', 'email_draft': '...' }\" }] }] }) }}",
+                "options": {}
+            },
+            "id": "ai-personalizer",
+            "name": "AI - Advanced Personalizer",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1400,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://discord.com/api/webhooks/1473341103506853922/r1IF5cCxZ_qNL0tn8pIV1CW3PolWM4DH2u-4i3yGEHYU4POadCj7qy11yfCydkeJCvpE",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={{ (function() {\n  const response = $json;\n  let data;\n  try {\n    const text = response.candidates[0].content.parts[0].text;\n    data = JSON.parse(text.replace(/```json|```/g, ''));\n  } catch (e) {\n    data = { founder: \"Founder\", bottleneck: \"Manual workflow\", competitor_intel: \"N/A\", subject: \"Question\", email_draft: \"Found a bottleneck...\" };\n  }\n  return JSON.stringify({\n    content: \"💎 **Eternal Sniper Alert (v9)**\\n**Agency:** \" + $('Deduplicate Leads').item.json.url + \"\\n**Founder:** \" + data.founder + \"\\n**Bottleneck:** \" + data.bottleneck + \"\\n**Competitor Context:** \" + data.competitor_intel + \"\\n\\n--- \\n**Subject:** \" + data.subject + \"\\n**Email:** \\n\" + data.email_draft + \"\\n---\\n\"\n  });\n})() }}",
+                "options": {}
+            },
+            "id": "discord-final",
+            "name": "Discord - Final Package",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1600,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Schedule (10 AM Daily)": {
+            "main": [
+                [
+                    {
+                        "node": "Agency Charter",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Agency Charter": {
+            "main": [
+                [
+                    {
+                        "node": "AI - Research Strategist",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "AI - Research Strategist": {
+            "main": [
+                [
+                    {
+                        "node": "Split Queries",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split Queries": {
+            "main": [
+                [
+                    {
+                        "node": "Tavily - Intel Scout",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Tavily - Intel Scout": {
+            "main": [
+                [
+                    {
+                        "node": "Split Search Results",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split Search Results": {
+            "main": [
+                [
+                    {
+                        "node": "Deduplicate Leads",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Deduplicate Leads": {
+            "main": [
+                [
+                    {
+                        "node": "Competitor Scout",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Competitor Scout": {
+            "main": [
+                [
+                    {
+                        "node": "AI - Advanced Personalizer",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "AI - Advanced Personalizer": {
+            "main": [
+                [
+                    {
+                        "node": "Discord - Final Package",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "callerPolicy": "workflowsFromSameOwner",
+        "availableInMCP": false,
+        "errorWorkflow": "QNngdxhHeeqpuaez"
+    },
+    "staticData": {}
+}
