@@ -15,22 +15,23 @@ export default function Footer() {
     {
       title: "Site Map",
       links: [
-        { label: "The Problem", href: "#bottleneck" },
-        { label: "The Solution", href: "#services" },
-        { label: "Process", href: "#process" },
-        { label: "Guarantee", href: "#guarantee" },
-        { label: "Audit", href: "#contact" },
+        { label: "Problem", href: "#bottleneck" },
+        { label: "How It Works", href: "#process" },
+        { label: "Services", href: "#services" },
+        { label: "Pricing", href: "#pricing" },
+        { label: "Pilot", href: "#guarantee" },
+        { label: "Contact", href: "#contact" },
       ],
     },
     {
-      title: "Our Solution",
+      title: "Solution",
       links: [
-        { label: "Lead Gen", href: "#services" },
-        { label: "Follow Up", href: "#services" },
-        { label: "CRM Sync", href: "#services" },
-        { label: "Client Onboarding", href: "#services" },
-        { label: "Reporting", href: "#services" },
-        { label: "Admin Ops", href: "#services" },
+        { label: "Competitor Scan", href: "#services" },
+        { label: "AI Analysis", href: "#services" },
+        { label: "Variation Generation", href: "#services" },
+        { label: "Weekly Report", href: "#services" },
+        { label: "Brand Kit", href: "#services" },
+        { label: "SaaS Platform", href: "#pricing" },
       ],
     },
     {
@@ -68,8 +69,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 max-w-md">
-              Done-for-you AI automation for marketing agencies. We build custom systems that eliminate
-              repetitive workflows so you can scale without hiring.
+              Competitor ad intelligence for performance marketing agencies. Scan, analyze, generate — one pipeline replacing 3 tools and 6 hours of brief writing.
             </p>
 
             {/* Contact Information */}

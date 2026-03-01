@@ -6,33 +6,33 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const problems = [
     {
         id: "01",
-        title: "Lead Decay",
-        description: "Every minute you wait to respond to a new lead, your conversion chance drops. Manual follow-up is too slow, and it's costing you deals.",
-        category: "Sales"
+        title: "The Guessing Game",
+        description: "You screenshot competitor ads and say 'make something like this.' No structure. Just vibes. Your creative team guesses, and you react instead of engineer.",
+        category: "Insight"
     },
     {
         id: "02",
-        title: "The Fulfillment Treadmill",
-        description: "You sign a client, but then you're stuck onboarding them for weeks. You stop selling to fulfill, and your pipeline dries up.",
-        category: "Operations"
+        title: "The 6-Day Gap",
+        description: "From 'saw a winning competitor ad' to 'our version is live' takes 6 days on average. The trend window closes in 48 hours. You're always late.",
+        category: "Speed"
     },
     {
         id: "03",
-        title: "The Hiring Bloat",
-        description: "You hire people to do work that software should do. Your revenue grows, but your margins get tighter with every new head.",
-        category: "Growth"
+        title: "The Brief Bottleneck",
+        description: "What hook type is it? What emotional tone? Where's the CTA and why? Nobody on your team answers these questions before a brief is written. So every brief is a guess dressed up as a strategy.",
+        category: "Process"
     },
     {
         id: "04",
-        title: "Scope Creep",
-        description: "Clients treat you like an employee because your processes aren't rigid. You spend hours on 'quick tasks' that you can't bill for.",
-        category: "Management"
+        title: "The 3-Tool Shuffle",
+        description: "You pay for a scanner. Then you write a brief manually. Then you use a separate generation tool. Zero data continuity. 4 to 6 hours of work per competitor ad cycle.",
+        category: "Operations"
     },
     {
         id: "05",
-        title: "Data Blindness",
-        description: "You don't know your actual profit per client because your reporting is a mess of scattered spreadsheets and dashboard screenshots.",
-        category: "Analytics"
+        title: "The Pattern Blindness",
+        description: "One winning ad is noise. Ten winning ads with the same hook framework is a signal. You are looking at individual ads when you should be tracking patterns across your entire vertical.",
+        category: "Intelligence"
     }
 ];
 
@@ -57,10 +57,10 @@ export default function ProblemSection() {
                         viewport={{ once: true }}
                     >
                         <SectionHeader
-                            badge="The Agency Trap"
-                            title="Why You Can't Scale"
-                            titleHighlighted="Past Your Ceiling"
-                            description="It's not a lead problem. It's a bandwidth problem. You're capping your own growth because your operations rely on humans doing robot work."
+                            badge="The Creative Gap"
+                            title="Why You Keep Losing"
+                            titleHighlighted="the Creative Battle"
+                            description="It's not a budget problem. It's an intelligence problem. You're competing blind while the data you need is sitting in your competitors' ad accounts."
                             align="left"
                         />
                     </motion.div>

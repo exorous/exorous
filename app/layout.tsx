@@ -21,21 +21,15 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://exorous.com';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Exorous',
+    default: 'Exorous — Competitor Ad Intelligence for Performance Agencies',
     template: '%s | Exorous',
   },
-  description: 'Exorous helps marketing agencies eliminate repetitive operations with done-for-you AI automation. Scale your agency without hiring.',
+  description: 'Scan competitor ads, get AI analysis of what\'s working, generate branded variations. One pipeline replacing 3 tools.',
   keywords: [
-    'AI Automation',
-    'AI Agency',
-    'Marketing Agency Automation',
-    'Agency Operations',
-    'Lead Qualification Automation',
-    'Client Onboarding Automation',
-    'Lead Automation',
-    'Intelligent Workflows',
-    'AI Agents',
-    'Business Process Automation',
+    'Competitor Ad Intelligence',
+    'Performance Marketing Agency',
+    'Ad Analysis AI',
+    'Creative Variation Generation',
     'Exorous',
   ],
   authors: [{ name: 'Exorous' }],
@@ -49,8 +43,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    title: 'Exorous | AI Automation Agency',
-    description: 'Done-for-you AI automation for marketing agencies. We build custom systems that eliminate repetitive workflows so you can scale without hiring.',
+    title: 'Exorous | Competitor Ad Intelligence',
+    description: 'Scan competitor ads, get AI analysis of what\'s working, generate branded variations. One pipeline replacing 3 tools.',
     siteName: 'Exorous',
     images: [
       {
@@ -63,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Exorous | AI Automation Agency',
-    description: 'Done-for-you AI automation for marketing agencies. Scale your operations without increasing headcount.',
+    title: 'Exorous | Competitor Ad Intelligence',
+    description: 'Scan competitor ads, get AI analysis of what\'s working, generate branded variations. One pipeline replacing 3 tools.',
     images: [`${siteUrl}/og-image.png`],
   },
   robots: {
@@ -100,7 +94,7 @@ export default function RootLayout({
                 name: 'Exorous',
                 url: siteUrl,
                 logo: `${siteUrl}/logo.png`,
-                description: 'Done-for-you AI automation agency for marketing agencies. We build custom systems that capture leads, qualify customers, and automate operations 24/7.',
+                description: 'Competitor ad intelligence for performance marketing agencies. Scan, analyze, generate — one pipeline replacing 3 tools and 6 hours of brief writing.',
                 address: {
                   '@type': 'PostalAddress',
                   addressLocality: 'Dhaka',
@@ -120,12 +114,11 @@ export default function RootLayout({
                 ],
                 areaServed: 'Worldwide',
                 serviceType: [
-                  'Lead Automation Workflows',
-                  'AI Follow-up Systems',
-                  'CRM Automation',
-                  'Client Onboarding Automation',
-                  'Reporting Automation',
-                  'Internal Operations Workflows',
+                  'Competitor Ad Scanning',
+                  'AI Ad Analysis',
+                  'Branded Variation Generation',
+                  'Weekly Intelligence Report',
+                  'Managed Pilot Service',
                 ],
               }),
             }}

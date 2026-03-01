@@ -1,34 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Pencil, Wrench, Rocket } from "lucide-react";
+import { Search, Brain, Palette } from "lucide-react";
 import SectionHeader from "./section-header";
 import SectionWrapper from "./section-wrapper";
 
 const steps = [
     {
         number: "01",
-        title: "The Audit",
-        description: "We tear down your current operations to find exactly where you're losing time and money.",
-        icon: <Phone className="h-5 w-5 text-primary" />,
+        title: "Competitor Scan",
+        description: "We scan your top 5 competitors weekly, pulling their latest ads from a library of 100M+ creatives. You see what's running and when it launched.",
+        icon: <Search className="h-5 w-5 text-primary" />,
     },
     {
         number: "02",
-        title: "The Blueprint",
-        description: "We design the exact system your agency needs to scale, tailored to your offer and team.",
-        icon: <Pencil className="h-5 w-5 text-primary" />,
+        title: "AI Analysis",
+        description: "Every winning ad gets broken down: hook type, emotional tone, pacing structure, CTA placement. Not opinion. Structured AI analysis trained on what actually converts.",
+        icon: <Brain className="h-5 w-5 text-primary" />,
     },
     {
         number: "03",
-        title: "The Build",
-        description: "We build it for you. You don't lift a finger. Your team keeps selling while we build the engine.",
-        icon: <Wrench className="h-5 w-5 text-primary" />,
-    },
-    {
-        number: "04",
-        title: "The Handover",
-        description: "We train your team and hand over the keys. You own the system entirely.",
-        icon: <Rocket className="h-5 w-5 text-primary" />,
+        title: "Branded Variations",
+        description: "From the analysis, we generate 8 branded variations per week using your brand kit. Colors, fonts, tone — all locked in from day one.",
+        icon: <Palette className="h-5 w-5 text-primary" />,
     },
 ];
 
@@ -36,14 +30,14 @@ export default function HowItWorksSection() {
     return (
         <SectionWrapper id="process" compact>
             <SectionHeader
-                badge="The Process"
-                title="The Deployment"
-                titleHighlighted="Protocol"
-                description="Your transition to an automated agency is structured and fast. No guesswork."
+                badge="The Pipeline"
+                title="Three Steps."
+                titleHighlighted="One Session."
+                description="No separate tools. No manual briefs. Scan, analyze, generate — in one automated pipeline."
             />
 
             <div className="max-w-5xl mx-auto relative">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-4">
                     {steps.map((step, idx) => (
                         <motion.div
                             key={idx}

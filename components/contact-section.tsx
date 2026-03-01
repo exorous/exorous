@@ -24,8 +24,8 @@ export default function ContactSection() {
   const contactInfo = [
     {
       icon: <Calendar className="h-4 w-4" />,
-      label: "Schedule",
-      value: "Free Workflow Audit",
+      label: "Format",
+      value: "Intake Call",
     },
     {
       icon: <Clock className="h-4 w-4" />,
@@ -34,18 +34,18 @@ export default function ContactSection() {
     },
     {
       icon: <Users className="h-4 w-4" />,
-      label: "Format",
-      value: "Direct video call",
+      label: "Availability",
+      value: "3 spots per quarter",
     },
   ];
 
   return (
     <SectionWrapper id="contact" compact>
       <SectionHeader
-        badge="Ready to Scale?"
-        title="Analyze Your"
-        titleHighlighted="Bleeding Time"
-        description="Every day you wait is another day of lost leads and wasted hours. Book your call to stop the bleeding."
+        badge="Apply"
+        title="Apply for the"
+        titleHighlighted="Managed Pilot"
+        description="Three spots available per quarter. We run the full pipeline for you for 90 days, then hand you the keys."
       />
 
       <div className="max-w-4xl mx-auto">
@@ -61,8 +61,8 @@ export default function ContactSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5 pointer-events-none" />
 
           <h4 className="text-2xl md:text-3xl font-bold mb-6 text-white tracking-tight">
-            Stop The Manual Grind. <br />
-            <span className="text-primary">Start The Machine.</span>
+            Book the Intake Call. <br />
+            <span className="text-primary">No pitch deck.</span>
           </h4>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 w-full max-w-2xl">
@@ -85,12 +85,12 @@ export default function ContactSection() {
             className="w-full sm:w-auto py-8 px-12 rounded-full bg-primary text-black hover:bg-primary/90 font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(23,194,227,0.3)] hover:shadow-[0_0_60px_rgba(23,194,227,0.5)] hover:scale-105"
           >
             <Calendar className="h-6 w-6" />
-            Book Your Call
+            Book the Intake Call
             <ArrowRight className="h-6 w-6" />
           </Button>
 
           <p className="mt-6 text-xs text-zinc-500 max-w-md">
-            No pressure sales. just a workflow audit to see where you're losing money and how we can fix it.
+            30 minutes. We map your competitive landscape and confirm fit. No pitch deck.
           </p>
 
         </motion.div>

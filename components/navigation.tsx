@@ -38,7 +38,7 @@ export default function Navigation() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ['hero', 'bottleneck', 'demo', 'services', 'faq', 'contact'];
+    const sections = ['hero', 'bottleneck', 'process', 'services', 'guarantee', 'pricing', 'faq', 'contact'];
 
     sections.forEach((id) => {
       const el = document.getElementById(id);
@@ -53,10 +53,10 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { name: 'Problem', href: '#bottleneck', id: 'bottleneck' },
-    { name: 'Solution', href: '#services', id: 'services' },
-    { name: 'Process', href: '#process', id: 'process' },
-    { name: 'Guarantee', href: '#guarantee', id: 'guarantee' },
+    { name: 'Problem', href: '/#bottleneck', id: 'bottleneck' },
+    { name: 'How It Works', href: '/#process', id: 'process' },
+    { name: 'Services', href: '/#services', id: 'services' },
+    { name: 'Pilot', href: '/#guarantee', id: 'guarantee' },
   ];
 
   return (
@@ -112,7 +112,7 @@ export default function Navigation() {
                 className="rounded-full text-xs font-bold px-4 h-9 bg-primary text-black hover:bg-primary/90"
                 onClick={() => trackButtonClick('Book Call', 'desktop-nav')}
               >
-                Book a Call
+                Book the Managed Pilot
               </Button>
             </Link>
           </div>
@@ -171,7 +171,7 @@ export default function Navigation() {
                 className="w-full rounded-xl bg-primary text-black hover:bg-primary/90 font-bold"
                 onClick={() => trackButtonClick('Book Call', 'mobile-nav')}
               >
-                Book a Call
+                Book the Managed Pilot
               </Button>
             </Link>
           </motion.div>

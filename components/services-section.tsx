@@ -2,61 +2,61 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Bot, Zap, Users, FileText, Settings, BarChart3 } from "lucide-react";
+import { Search, Brain, Image, FileText, Brush, Rocket } from "lucide-react";
 import SectionHeader from "./section-header";
 
 const services = [
   {
-    title: "The Growth Engine",
+    title: "Weekly Competitor Scan",
     description:
-      "Your sales team shouldn't be chasing bad leads. We build systems that engage prospects instantly, qualify them, and only book calls with the ones who have budget.",
-    icon: <Bot className="h-7 w-7 text-primary" />,
-    stats: "0s Response Time",
+      "Every Monday, we pull the latest ads from your top 5 competitors. You know what they launched, when, and on which platform — before your week starts.",
+    icon: <Search className="h-7 w-7 text-primary" />,
+    stats: "5 Competitors Tracked",
     color: "primary",
     number: "01",
   },
   {
-    title: "The Nurture Matrix",
+    title: "AI Pattern Analysis",
     description:
-      "Stop losing deals because you forgot to follow up. We automate personalized messages across Email, SMS, and LinkedIn so you stay top-of-mind without lifting a finger.",
-    icon: <Zap className="h-7 w-7 text-emerald-400" />,
-    stats: "+40% Reply Rate",
+      "We do not just show you the ads. We break down the hook framework, emotional arc, pacing, and CTA mechanics of every winning creative. Structured intelligence, not screenshots.",
+    icon: <Brain className="h-7 w-7 text-emerald-400" />,
+    stats: "4 Dimensions Analyzed",
     color: "emerald",
     number: "02",
   },
   {
-    title: "The Data Backbone",
+    title: "Branded Variation Generation",
     description:
-      "Stop guessing. We sync your entire agency so you know exactly which ads are working and which clients are actually profitable.",
-    icon: <Settings className="h-7 w-7 text-purple-400" />,
-    stats: "100% Data Accuracy",
+      "8 new creatives per week, generated from your brand kit and informed by the analysis. Your colors, your tone, your message — engineered from what is working.",
+    icon: <Image className="h-7 w-7 text-purple-400" />,
+    stats: "8 Creatives Per Week",
     color: "purple",
     number: "03",
   },
   {
-    title: "Onboarding Velocity",
+    title: "The Weekly Report",
     description:
-      "Sign a contract, and the project starts itself. Invoices sent, Slack channels created, and ClickUp folders ready—instantly.",
-    icon: <Users className="h-7 w-7 text-orange-400" />,
-    stats: "Day 1 Kickoff",
+      "Every Monday morning you get a structured briefing: what your competitors ran, what is working and why, and 8 variations ready to test. One document, every week.",
+    icon: <FileText className="h-7 w-7 text-orange-400" />,
+    stats: "Monday Delivery",
     color: "orange",
     number: "04",
   },
   {
-    title: "The Retention Guard",
+    title: "Brand Kit Setup",
     description:
-      "Clients stay longer when they see results. We automate the reporting so they always know exactly what you've done for them.",
-    icon: <BarChart3 className="h-7 w-7 text-cyan-300" />,
-    stats: "Reduced Churn",
+      "In week one we capture your brand guidelines: logo, color palette, typography, tone of voice, product details. Every variation is on-brand from generation one.",
+    icon: <Brush className="h-7 w-7 text-cyan-300" />,
+    stats: "Day 1 Setup",
     color: "cyan",
     number: "05",
   },
   {
-    title: "The Admin Killer",
+    title: "SaaS Transition",
     description:
-      "Your high-level staff shouldn't be moving files. We automate invoicing and contractor payouts so you can run lean.",
-    icon: <FileText className="h-7 w-7 text-yellow-400" />,
-    stats: "Zero Admin Bloat",
+      "At day 90, you get access to the self-serve platform. Run your own scans, read your own analysis, generate your own variations — at a fraction of the managed cost.",
+    icon: <Rocket className="h-7 w-7 text-yellow-400" />,
+    stats: "Day 90 Handover",
     color: "yellow",
     number: "06",
   },
@@ -168,9 +168,9 @@ export default function ServicesSection() {
         <div className="container mx-auto px-4 pt-20 sm:pt-24">
           <SectionHeader
             badge="The Solution"
-            title="Introducing The"
-            titleHighlighted="Agency OS"
-            description="A complete infrastructure overhaul. We replace your manual processes with intelligent automation systems."
+            title="Introducing the"
+            titleHighlighted="Intelligence Pipeline"
+            description="A complete competitive intelligence system. We replace guesswork with structured AI analysis and branded outputs — delivered weekly."
           />
         </div>
 

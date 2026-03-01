@@ -8,24 +8,24 @@ import SectionWrapper from "./section-wrapper";
 
 const faqs = [
     {
-        question: "How long does it take to deploy an AI system?",
-        answer: "Most systems go live within 1–2 weeks. Complex multi-tool integrations may take 3–4 weeks depending on scope."
+        question: "Which competitors do you track?",
+        answer: "You choose up to 5 competitor brands. We can track more in the Growth SaaS tier."
     },
     {
-        question: "Do I need to replace my existing CRM?",
-        answer: "No. We specialize in building 'AI overlays' that sit on top of your current tools (HubSpot, Salesforce, Zoho, etc.) and automate the data flow between them."
+        question: "How do you learn my brand guidelines?",
+        answer: "In week one we send a brand kit intake form. Logo, colors, fonts, tone of voice, product context. Takes 20 minutes. Every variation is on-brand from day one."
     },
     {
-        question: "Is my business data secure with AI?",
-        answer: "Absolutely. We use enterprise-grade APIs with strict data privacy controls. Your proprietary business data is never used to train public AI models."
+        question: "What AI models power the analysis?",
+        answer: "We use Claude claude-opus-4-6 for video ad analysis and claude-sonnet-4-6 for image analysis. Gemini handles variation generation. No generic models."
     },
     {
-        question: "What kind of ROI can I expect?",
-        answer: "Most clients see a 70-80% reduction in lead response time and save 20+ hours of manual admin work per week within the first month of deployment."
+        question: "What happens at the end of 90 days?",
+        answer: "You get login access to the self-serve Exorous platform. Run your own scans, read analysis, and generate variations at $349/month instead of $2,000."
     },
     {
-        question: "Do you offer ongoing support?",
-        answer: "Yes. Every project includes a 30-day post-launch warranty. We also offer ongoing monthly optimization and priority support to keep your systems running at peak performance."
+        question: "What if I do not like the variations?",
+        answer: "One revision round per week, included. You give feedback on Monday. Revised creatives are delivered by Wednesday."
     }
 ];
 
@@ -35,10 +35,10 @@ export default function FAQSection() {
     return (
         <SectionWrapper id="faq" compact>
             <SectionHeader
-                badge="Knowledge Base"
+                badge="Questions"
                 title="Common"
                 titleHighlighted="Questions"
-                description="Everything you need to know about transforming your business with Exorous AI."
+                description="Everything you need to know about the managed pilot and how the pipeline works."
             />
 
             <div className="max-w-3xl mx-auto space-y-3">

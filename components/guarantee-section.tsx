@@ -26,24 +26,29 @@ export default function GuaranteeSection() {
                         <div className="relative z-10 flex flex-col items-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-8 uppercase tracking-widest">
                                 <Shield className="w-3 h-3" />
-                                Risk-Free Implementation
+                                White-Glove. Risk-Qualified.
                             </div>
 
                             <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter">
-                                The 2-Week <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Performance Pilot</span>
+                                The 90-Day <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Managed Pilot</span>
                             </h3>
 
                             <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                                We don't ask for long-term retainers until we prove our value.
-                                We build your first automation system in 14 days. <br className="hidden md:block" />
-                                <span className="text-white font-medium">If it doesn't save you time, you don't pay a cent.</span>
+                                We run the entire pipeline for you for 90 days. Weekly scans, AI analysis, 8 branded variations. If we do not find three competitor insights worth acting on in week one, you do not pay for month one.
                             </p>
 
-                            <div className="flex flex-wrap justify-center gap-4 mb-10">
-                                {["Zero Upfront Risk", "14-Day Turnaround", "Pay on Results"].map((item) => (
-                                    <div key={item} className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-sm text-zinc-300">
-                                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                                        {item}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 w-full max-w-3xl">
+                                {[
+                                    { label: "$750 Setup Fee", desc: "One-time. Covers brand kit intake, competitor research, and system configuration." },
+                                    { label: "$2,000 Per Month", desc: "Full managed service. Scan, analysis, variations. Everything delivered weekly." },
+                                    { label: "Day 90 Transition", desc: "You get login access to the self-serve platform at $349/month. No renegotiation." },
+                                ].map((item) => (
+                                    <div key={item.label} className="flex flex-col gap-2 p-4 rounded-2xl bg-zinc-900 border border-white/10 text-left">
+                                        <div className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                                            <span className="text-sm font-bold text-white">{item.label}</span>
+                                        </div>
+                                        <p className="text-xs text-zinc-400 leading-relaxed">{item.desc}</p>
                                     </div>
                                 ))}
                             </div>
