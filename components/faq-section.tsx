@@ -9,7 +9,7 @@ import SectionWrapper from "./section-wrapper";
 const faqs = [
     {
         question: "Which competitors do you track?",
-        answer: "You choose up to 5 competitor brands. We can track more in the Growth SaaS tier."
+        answer: "You choose up to 5 competitor brands. We can expand coverage as your needs grow."
     },
     {
         question: "How do you learn my brand guidelines?",
@@ -17,11 +17,11 @@ const faqs = [
     },
     {
         question: "What AI models power the analysis?",
-        answer: "We use Claude claude-opus-4-6 for video ad analysis and claude-sonnet-4-6 for image analysis. Gemini handles variation generation. No generic models."
+        answer: "We use frontier AI models for analysis and variation generation. No generic or open-source models."
     },
     {
         question: "What happens at the end of 90 days?",
-        answer: "You get login access to the self-serve Exorous platform. Run your own scans, read analysis, and generate variations at $349/month instead of $2,000."
+        answer: "You get login access to the self-serve Exorous platform. Run your own scans, read analysis, and generate variations independently at a fraction of the managed cost."
     },
     {
         question: "What if I do not like the variations?",

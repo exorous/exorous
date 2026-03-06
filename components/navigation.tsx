@@ -38,7 +38,7 @@ export default function Navigation() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ['hero', 'bottleneck', 'process', 'services', 'guarantee', 'pricing', 'faq', 'contact'];
+    const sections = ['hero', 'bottleneck', 'process', 'services', 'guarantee', 'faq', 'contact'];
 
     sections.forEach((id) => {
       const el = document.getElementById(id);

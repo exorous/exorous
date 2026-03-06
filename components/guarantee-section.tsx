@@ -37,11 +37,10 @@ export default function GuaranteeSection() {
                                 We run the entire pipeline for you for 90 days. Weekly scans, AI analysis, 8 branded variations. If we do not find three competitor insights worth acting on in week one, you do not pay for month one.
                             </p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 w-full max-w-3xl">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 w-full max-w-2xl">
                                 {[
-                                    { label: "$750 Setup Fee", desc: "One-time. Covers brand kit intake, competitor research, and system configuration." },
                                     { label: "$2,000 Per Month", desc: "Full managed service. Scan, analysis, variations. Everything delivered weekly." },
-                                    { label: "Day 90 Transition", desc: "You get login access to the self-serve platform at $349/month. No renegotiation." },
+                                    { label: "Day 90 Transition", desc: "You get login access to the self-serve Exorous platform. Run your own scans and generate variations independently." },
                                 ].map((item) => (
                                     <div key={item.label} className="flex flex-col gap-2 p-4 rounded-2xl bg-zinc-900 border border-white/10 text-left">
                                         <div className="flex items-center gap-2">

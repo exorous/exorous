@@ -18,7 +18,6 @@ export default function Footer() {
         { label: "Problem", href: "#bottleneck" },
         { label: "How It Works", href: "#process" },
         { label: "Services", href: "#services" },
-        { label: "Pricing", href: "#pricing" },
         { label: "Pilot", href: "#guarantee" },
         { label: "Contact", href: "#contact" },
       ],
@@ -31,7 +30,6 @@ export default function Footer() {
         { label: "Variation Generation", href: "#services" },
         { label: "Weekly Report", href: "#services" },
         { label: "Brand Kit", href: "#services" },
-        { label: "SaaS Platform", href: "#pricing" },
       ],
     },
     {
